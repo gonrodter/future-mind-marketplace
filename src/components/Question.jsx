@@ -7,8 +7,8 @@ const Question = ({ question, answer }) => {
   const ansClass = `${expandClass} p-4`;
 
   return (
-    <div className="shadow rounded border border-gray-100 border-t-0">
-      <div className="p-4 text-xl relative font-medium">
+    <div className="text-primary-blue font-medium shadow rounded border border-gray-100 border-t-0 mt-6">
+      <div className="text-primary-blue font-semibold p-3 text-lg relative">
         <div className="w-5/6">{question}</div>
         <button
           className="text-xl absolute top-0 right-0 p-4 focus:outline-none"
