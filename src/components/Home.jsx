@@ -3,7 +3,7 @@ import CK from "../assets/CK_tie.png";
 const Home = () => {
   return (
     <div className="min-h-screen flex items-center font-body">
-      <div className="h-full w-1/2 px-52">
+      <div className="h-full w-1/2 pl-72 pr-40">
         <p className=" text-6xl font-bold text-primary-blue">
           Discover, collect and sell NFts
         </p>
@@ -14,19 +14,16 @@ const Home = () => {
           </p>
         </div>
         <div className="mt-10">
-          <button
-            className="bg-secondary-blue text-white py-2 w-40 px-4 rounded-md font-medium mr-16
-            "
-          >
+          <button className="bg-secondary-blue text-white py-2 w-40 px-4 rounded-md font-semibold mr-16">
             Marketplace
           </button>
-          <button className="bg-secondary-blue text-white py-2 w-40 px-4 rounded-md font-medium">
+          <button className="bg-secondary-blue text-white py-2 w-40 px-4 rounded-md font-semibold">
             Collections
           </button>
         </div>
       </div>
       <div className="h-full w-1/2">
-        <div className="absolute top-1/4 pl-44">
+        <div className="absolute top-1/4 pl-40">
           <img className="block w-1/2 h-full rounded-t-md " src={CK} />
           <div className=" rounded-b-md shadow-xl w-1/2 border-2 border-t-0">
             <p className="text-2xl text-primary-blue font-semibold p-4">
