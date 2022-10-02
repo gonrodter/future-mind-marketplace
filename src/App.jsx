@@ -12,6 +12,8 @@ import CollectionAboutUs from "./components/CollectionAboutUs";
 import CollectionRoadmap from "./components/CollectionRoadmap";
 import CollectionTeam from "./components/CollectionTeam";
 import CollectionFAQ from "./components/CollectionFAQ";
+import OwnedNFTsList from "./components/OwnedNFTsList";
+
 
 
 
@@ -40,6 +42,14 @@ function App () {
                 <MainMint accounts={accounts} setAccounts={setAccounts} />
                 <CollectionInfo /> <CollectionAboutUs /> <CollectionRoadmap />
                 <CollectionTeam /> <CollectionFAQ />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/mywallet"
+            element={
+              <>
+                <OwnedNFTsList />
               </>
             }
           ></Route>
