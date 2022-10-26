@@ -1,8 +1,8 @@
-import White_logo from "../assets/whitelogo.png";
-import Twitter from "../assets/twitter.png";
-import Discord from "../assets/discord.png";
-import Line from "../assets/line.png";
-import Big_line from "../assets/big_line.png";
+import White_logo from "../../assets/whitelogo.png";
+import Twitter from "../../assets/twitter.png";
+import Discord from "../../assets/discord.png";
+import Line from "../../assets/line.png";
+import Big_line from "../../assets/big_line.png";
 
 const Footer = () => {
   return (

@@ -8,8 +8,8 @@ dotenv.config();
 module.exports = {
   solidity: "0.8.9",
   networks: {
-    rinkeby: {
-      url: process.env.REACT_APP_RINKEBY_RPC_URL,
+    goerli: {
+      url: process.env.REACT_APP_GOERLI_RPC_URL,
       accounts: [process.env.REACT_APP_PRIVATE_KEY]
     },
   },

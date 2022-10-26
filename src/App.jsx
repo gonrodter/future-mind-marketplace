@@ -2,17 +2,19 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
 
-import MainMint from "./MainMint";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import Advices from "./components/Advices";
-import Footer from "./components/Footer";
-import CollectionInfo from "./components/CollectionInfo";
-import CollectionAboutUs from "./components/CollectionAboutUs";
-import CollectionRoadmap from "./components/CollectionRoadmap";
-import CollectionTeam from "./components/CollectionTeam";
-import CollectionFAQ from "./components/CollectionFAQ";
-import OwnedNFTsList from "./components/OwnedNFTsList";
+import MainMint from "./components/FutureMind/MainMint";
+import Navbar from "./components/Reutilized/Navbar";
+import Home from "./components/MainPage/Home";
+import TopCollections from "./components/MainPage/TopCollections";
+import Advices from "./components/MainPage/Advices";
+import Footer from "./components/Reutilized/Footer";
+import CollectionInfo from "./components/FutureMind/CollectionInfo";
+import CollectionAboutUs from "./components/FutureMind/CollectionAboutUs";
+import CollectionRoadmap from "./components/FutureMind/CollectionRoadmap";
+import CollectionTeam from "./components/FutureMind/CollectionTeam";
+import CollectionFAQ from "./components/FutureMind/CollectionFAQ";
+import OwnedNFTsList from "./components/MyWallet/OwnedNFTsList";
+import ProfileSection from "./components/MyWallet/ProfileSection";
 
 
 
@@ -31,6 +33,7 @@ function App () {
               <>
                 <Navbar accounts={accounts} setAccounts={setAccounts} />
                 <Home />
+                {/* <TopCollections /> */}
                 <Advices />
               </>
             }
@@ -49,6 +52,7 @@ function App () {
             path="/mywallet"
             element={
               <>
+                <ProfileSection />
                 <OwnedNFTsList />
               </>
             }

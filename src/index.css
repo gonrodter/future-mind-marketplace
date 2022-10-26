@@ -25,3 +25,15 @@ backdrop-filter: blur(5px);
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px;
 }
+
+.owned-nfts-grid{
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(
+      250px,
+      1fr
+    )
+  );
+  gap: 48px;
+}

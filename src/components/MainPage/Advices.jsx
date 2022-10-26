@@ -1,6 +1,6 @@
-import Wallet from "../assets/wallet.png";
-import Credit_Card from "../assets/credit_card.png";
-import Dollar from "../assets/dollar.png";
+import Wallet from "../../assets/wallet.png";
+import Credit_Card from "../../assets/credit_card.png";
+import Dollar from "../../assets/dollar.png";
 
 const Advices = () => {
   return (

@@ -1,4 +1,4 @@
-import CK from "../assets/CK_tie.png";
+import CK from "../../assets/CK_tie.png";
 
 const Home = () => {
   return (

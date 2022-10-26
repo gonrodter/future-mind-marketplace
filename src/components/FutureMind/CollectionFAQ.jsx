@@ -1,5 +1,5 @@
 import { RiQuestionAnswerLine } from "react-icons/ri";
-import Question from "./Question";
+import Question from "../Reutilized/Question";
 
 const CollectionFAQ = () => {
     

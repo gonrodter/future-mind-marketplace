@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
 import { ethers, BigNumber } from "ethers";
-import ciberpunk from "./assets/moustache_cyberpunk.png";
-import roboPunksNFT from "./RoboPunksNFT.json";
+import ciberpunk from "../../assets/moustache_cyberpunk.png";
+import roboPunksNFT from "../../RoboPunksNFT.json";
 
-const roboPunksNFTAddress = "0x95BCF0c5ceC9Df65113BceAb688B610b5631e7ce";
+const roboPunksNFTAddress = "0xA8A94385aBC51E33aAC8DE59Ca9FBA75C9fb9d49";
 
 const MainMint = ({ accounts, setAccounts }) => {
   const [mintAmount, setMintAmount] = useState(1);

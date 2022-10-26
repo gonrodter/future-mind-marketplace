@@ -1,8 +1,8 @@
 import { MdHistoryEdu } from "react-icons/md";
-import multi from "../assets/multi.png";
-import dollar from "../assets/dollarcoin.png";
-import city from "../assets/city.png";
-import controller from "../assets/controller.png";
+import multi from "../../assets/multi.png";
+import dollar from "../../assets/dollarcoin.png";
+import city from "../../assets/city.png";
+import controller from "../../assets/controller.png";
 
 const CollectionAboutUs = () => {
     return (

@@ -1,10 +1,10 @@
-import wizard from "../assets/pink_wizard_cheetah.png";
-import angry from "../assets/pinky_angry_tiger.png";
-import pirate from "../assets/pirate_tyga.png";
-import robo from "../assets/robo.png";
-import snipe from "../assets/snipe.png";
-import cheetah from "../assets/yellow_cheetah.png";
-import turkish from "../assets/turkish_pirate.png";
+import wizard from "../../assets/pink_wizard_cheetah.png";
+import angry from "../../assets/pinky_angry_tiger.png";
+import pirate from "../../assets/pirate_tyga.png";
+import robo from "../../assets/robo.png";
+import snipe from "../../assets/snipe.png";
+import cheetah from "../../assets/yellow_cheetah.png";
+import turkish from "../../assets/turkish_pirate.png";
 import { RiLightbulbLine } from "react-icons/ri";
 
 const CollectionInfo = () => {

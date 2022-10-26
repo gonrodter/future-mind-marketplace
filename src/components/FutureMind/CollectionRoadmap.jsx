@@ -1,5 +1,5 @@
 import { FaFlagCheckered } from "react-icons/fa";
-import finish_line from "../assets/finish_line.png";
+import finish_line from "../../assets/finish_line.png";
 
 const CollectionRoadmap = () => {
   return (
