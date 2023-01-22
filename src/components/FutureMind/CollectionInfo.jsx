@@ -6,6 +6,7 @@ import snipe from "../../assets/snipe.png";
 import cheetah from "../../assets/yellow_cheetah.png";
 import turkish from "../../assets/turkish_pirate.png";
 import { RiLightbulbLine } from "react-icons/ri";
+import React from "react";
 
 const CollectionInfo = () => {
   return (

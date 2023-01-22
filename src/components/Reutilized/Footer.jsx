@@ -3,6 +3,7 @@ import Twitter from "../../assets/twitter.png";
 import Discord from "../../assets/discord.png";
 import Line from "../../assets/line.png";
 import Big_line from "../../assets/big_line.png";
+import React from "react";
 
 const Footer = () => {
   return (

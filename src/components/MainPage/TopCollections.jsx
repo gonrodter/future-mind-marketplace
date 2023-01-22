@@ -1,6 +1,8 @@
 import { QueryClient, useQuery } from "react-query";
 import axios from "axios";
 import { fetchCollections } from "../../fetchers/collections";
+import React from "react";
+
 const TopCollections = () => {
 
     const { isError, isSuccess, isLoading, data, error } = useQuery(

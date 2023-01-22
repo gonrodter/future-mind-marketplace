@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
 const Question = ({ question, answer }) => {

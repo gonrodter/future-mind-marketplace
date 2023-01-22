@@ -3,6 +3,7 @@ import multi from "../../assets/multi.png";
 import dollar from "../../assets/dollarcoin.png";
 import city from "../../assets/city.png";
 import controller from "../../assets/controller.png";
+import React from "react";
 
 const CollectionAboutUs = () => {
     return (

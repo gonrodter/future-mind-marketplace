@@ -1,4 +1,5 @@
 import CK from "../../assets/CK_tie.png";
+import React from "react";
 
 const OwnedNFT = () => {
   return (

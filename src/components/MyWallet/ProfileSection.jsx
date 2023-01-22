@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const ProfileSection = () => {
 

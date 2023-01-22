@@ -1,4 +1,5 @@
 import OwnedNFT from "./OwnedNFT";
+import React from "react";
 
 const OwnedNFTsList = () => {
   return (
