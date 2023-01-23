@@ -17,21 +17,25 @@ const Navbar = ({ accounts, setAccounts }) => {
   }
 
   return (
-    <nav className="flex fixed w-full justify-between items-center shadow-md h-20 font-body bg-white z-50">
+    <nav className="flex fixed w-full justify-between items-center shadow-md h-12 md:h-16 lg:h-20 font-body bg-white z-50">
       <div className="flex items-center ml-12">
-        <img className=" w-10 h-10 mr-2" src={FMlogo} alt="FMLogo" />
+        <img
+          className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 mr-2"
+          src={FMlogo}
+          alt="FMLogo"
+        />
         <Link
-          className=" text-secondary-blue uppercase tracking-widest text-2xl font-semibold"
+          className=" text-secondary-blue uppercase tracking-widest text-md md:text-lg lg:text-2xl font-semibold"
           to="/"
         >
           Future Mind
         </Link>
       </div>
-      <ul className="flex">
+      <ul className="hidden md:flex">
         <div className="flex font-normal">
           <li className="pr-8">
             <Link
-              className=" block text-primary-blue no-underline tracking-wider text-lg"
+              className=" block text-primary-blue no-underline tracking-wider text-base md:text-md lg:text-lg"
               to="/marketplace"
             >
               Marketplace
@@ -39,7 +43,7 @@ const Navbar = ({ accounts, setAccounts }) => {
           </li>
           <li className="pr-8">
             <Link
-              className=" text-primary-blue no-underline tracking-wider text-lg"
+              className=" text-primary-blue no-underline tracking-wider text-base md:text-md lg:text-lg"
               to="/futuremind"
             >
               FutureMind
@@ -47,7 +51,7 @@ const Navbar = ({ accounts, setAccounts }) => {
           </li>
           <li className="pr-8">
             <Link
-              className=" text-primary-blue no-underline tracking-wider text-lg"
+              className=" text-primary-blue no-underline tracking-wider text-base md:text-md lg:text-lg"
               to="/"
             >
               About
@@ -71,7 +75,7 @@ const Navbar = ({ accounts, setAccounts }) => {
           </li>
           <li className="pr-8">
             {isConnected ? (
-              <p className="text-primary-blue no-underline tracking-wider text-lg inline-block align-middle border-2 border-secondary-blue px-2 rounded-lg">
+              <p className="text-primary-blue no-underline tracking-wider text-base md:text-md lg:text-lg inline-block align-middle border-2 border-secondary-blue px-2 rounded-lg">
                 Connected
               </p>
             ) : (
