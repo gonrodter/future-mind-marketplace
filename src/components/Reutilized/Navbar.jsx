@@ -17,15 +17,15 @@ const Navbar = ({ accounts, setAccounts }) => {
   }
 
   return (
-    <nav className="flex fixed w-full justify-between items-center shadow-md h-12 md:h-16 lg:h-20 font-body bg-white z-50">
+    <nav className="flex fixed w-full justify-between items-center shadow-md h-16 md:h-20 font-body bg-white z-50">
       <div className="flex items-center ml-12">
         <img
-          className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 mr-2"
+          className="w-8 h-8 md:w-10 md:h-10 mr-2"
           src={FMlogo}
           alt="FMLogo"
         />
         <Link
-          className=" text-secondary-blue uppercase tracking-widest text-md md:text-lg lg:text-2xl font-semibold"
+          className=" text-secondary-blue uppercase tracking-widest text-lg md:text-2xl font-semibold"
           to="/"
         >
           Future Mind

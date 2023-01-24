@@ -12,6 +12,7 @@ module.exports = {
         body: ["Poppins"],
       },
       padding: {
+        "10px": "10px",
       },
     },
   },
