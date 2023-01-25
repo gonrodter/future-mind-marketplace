@@ -17,8 +17,8 @@ const Navbar = ({ accounts, setAccounts }) => {
   }
 
   return (
-    <nav className="flex fixed w-full justify-between items-center shadow-md h-16 md:h-20 font-body bg-white z-50">
-      <div className="flex items-center ml-12">
+    <nav className="flex fixed w-full justify-between items-center shadow-md h-16 md:h-20 font-body bg-white z-50 px-12">
+      <div className="flex items-center ">
         <img
           className="w-8 h-8 md:w-10 md:h-10 mr-2"
           src={FMlogo}
@@ -58,7 +58,7 @@ const Navbar = ({ accounts, setAccounts }) => {
             </Link>
           </li>
         </div>
-        <div className="flex font-normal pr-8">
+        <div className="flex font-normal">
           <li className="pr-8">
             {isConnected ? (
               <Link
@@ -73,7 +73,7 @@ const Navbar = ({ accounts, setAccounts }) => {
               </a>
             )}
           </li>
-          <li className="pr-8">
+          <li className="">
             {isConnected ? (
               <p className="text-primary-blue no-underline tracking-wider text-base md:text-md lg:text-lg inline-block align-middle border-2 border-secondary-blue px-2 rounded-lg">
                 Connected
