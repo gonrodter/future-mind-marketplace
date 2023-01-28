@@ -17,7 +17,7 @@ const Navbar = ({ accounts, setAccounts }) => {
   }
 
   return (
-    <nav className="flex fixed w-full justify-between items-center shadow-md h-16 md:h-20 font-body bg-white z-50 px-12">
+    <nav className="flex fixed w-full justify-between items-center shadow-md h-16 md:h-20 font-body bg-white z-50 pl-12 md:px-12">
       <div className="flex items-center ">
         <img
           className="w-8 h-8 md:w-10 md:h-10 mr-2"

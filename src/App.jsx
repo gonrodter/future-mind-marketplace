@@ -31,7 +31,6 @@ function App () {
             path="/"
             element={
               <>
-                <Navbar accounts={accounts} setAccounts={setAccounts} />
                 <Home />
                 {/* <TopCollections /> */}
                 <Advices />
@@ -58,7 +57,6 @@ function App () {
             }
           ></Route>
         </Routes>
-
         <Footer />
       </div>
     </Router>
