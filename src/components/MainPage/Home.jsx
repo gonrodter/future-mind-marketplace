@@ -14,11 +14,11 @@ const Home = () => {
             community
           </p>
         </div>
-        <div className="mt-10 w-full m-auto text-center">
-          <button className="bg-secondary-blue text-white py-2 w-32 lg:w-40 px-3 rounded-md font-semibold mr-16 md:mr-10 lg:mr-14 xl:mr-16">
+        <div className="mt-10 w-full flex gap-6 text-center md:text-left">
+          <button className="text-center bg-secondary-blue text-white mt-4 py-2 w-32 lg:w-40 px-3 rounded-md font-semibold">
             Marketplace
           </button>
-          <button className="bg-secondary-blue text-white mt-4 py-2 w-32 lg:w-40 px-4 rounded-md font-semibold">
+          <button className="text-center bg-secondary-blue text-white mt-4 py-2 w-32 lg:w-40 px-4 rounded-md font-semibold">
             Collections
           </button>
         </div>
