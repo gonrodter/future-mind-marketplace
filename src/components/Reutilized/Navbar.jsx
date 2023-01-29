@@ -25,7 +25,7 @@ const Navbar = ({ accounts, setAccounts }) => {
           alt="FMLogo"
         />
         <Link
-          className=" text-secondary-blue uppercase tracking-widest text-lg md:text-2xl font-semibold"
+          className=" text-secondary-blue uppercase tracking-widest text-xl md:text-2xl font-semibold"
           to="/"
         >
           Future Mind
@@ -35,7 +35,7 @@ const Navbar = ({ accounts, setAccounts }) => {
         <div className="flex font-normal">
           <li className="pr-8">
             <Link
-              className=" block text-primary-blue no-underline tracking-wider text-base md:text-md lg:text-lg"
+              className=" block text-primary-blue no-underline tracking-wider text-base md:text-lg"
               to="/marketplace"
             >
               Marketplace
@@ -43,7 +43,7 @@ const Navbar = ({ accounts, setAccounts }) => {
           </li>
           <li className="pr-8">
             <Link
-              className=" text-primary-blue no-underline tracking-wider text-base md:text-md lg:text-lg"
+              className=" text-primary-blue no-underline tracking-wider text-base md:text-lg"
               to="/futuremind"
             >
               FutureMind
@@ -51,7 +51,7 @@ const Navbar = ({ accounts, setAccounts }) => {
           </li>
           <li className="pr-8">
             <Link
-              className=" text-primary-blue no-underline tracking-wider text-base md:text-md lg:text-lg"
+              className=" text-primary-blue no-underline tracking-wider text-base md:text-lg"
               to="/"
             >
               About

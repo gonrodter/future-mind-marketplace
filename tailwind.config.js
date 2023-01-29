@@ -12,7 +12,9 @@ module.exports = {
         body: ["Poppins"],
       },
       spacing: {
-        "650px": "650px",
+        "350px": "350px",
+        "450px": "450px",
+        "640px": "640px",
       },
     },
   },
