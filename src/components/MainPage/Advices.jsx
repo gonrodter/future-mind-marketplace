@@ -5,9 +5,9 @@ import React from "react";
 
 const Advices = () => {
   return (
-    <div className="md:min-h-screen md:flex font-body">
-      <div className="w-full bg-gray-100 my-52">
-        <div className="mt-16">
+    <div className="md:flex font-body">
+      <div className="w-full bg-gray-100 mb-52 py-16 md:pb-0">
+        <div>
           <p className="text-center font-bold text-3xl text-primary-blue">
             Here are some advices
           </p>
@@ -23,7 +23,7 @@ const Advices = () => {
               MetaMask, with more to be added in the future.
             </p>
           </div>
-          <div className="py-10">
+          <div className="py-10 md:py-0">
             <img className="m-auto" src={Credit_Card} alt="Wallet" />
             <p className="font-semibold text-xl text-primary-blue mt-4">
               Buy an NFT
