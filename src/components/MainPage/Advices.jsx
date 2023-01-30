@@ -5,7 +5,7 @@ import React from "react";
 
 const Advices = () => {
   return (
-    <div className="min-h-screen flex font-body">
+    <div className="md:min-h-screen md:flex font-body">
       <div className="w-full bg-gray-100 my-52">
         <div className="mt-16">
           <p className="text-center font-bold text-3xl text-primary-blue">
