@@ -3,7 +3,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div className="py-32 md:pt-0 md:min-h-screen flex items-center font-body">
+    <div className="py-32 md:py-0 md:min-h-screen flex items-center font-body">
       <div className="px-12 md:w-1/2 xl:w-2/3 text-center">
         <div className="text-left inline-block m-auto xl:w-640px">
           <p className="text-6xl font-bold text-primary-blue">
