@@ -4,8 +4,8 @@ import React from "react";
 const Home = () => {
   return (
     <div className="py-32 md:py-0 md:min-h-screen flex items-center font-body">
-      <div className="px-12 md:w-1/2 xl:w-2/3 text-center">
-        <div className="text-left inline-block m-auto xl:w-640px">
+      <div className="mx-12 md:w-1/2 xl:w-2/3 text-center">
+        <div className="text-left m-auto xl:w-640px">
           <p className="text-6xl font-bold text-primary-blue">
             Discover, collect and sell NFts
           </p>
@@ -16,10 +16,10 @@ const Home = () => {
             </p>
           </div>
           <div className="mt-10 w-full flex justify-center gap-10 md:gap-6 lg:gap-10 xl:gap-16 md:justify-start">
-            <button className="bg-secondary-blue text-white mt-4 py-2 w-40 px-3 rounded-md font-semibold">
+            <button className="bg-secondary-blue text-white mt-4 py-2 w-32 md:w-40 px-3 rounded-md font-semibold">
               Marketplace
             </button>
-            <button className="bg-secondary-blue text-white mt-4 py-2 w-40 px-4 rounded-md font-semibold">
+            <button className="bg-secondary-blue text-white mt-4 py-2 w-32 md:w-40 px-4 rounded-md font-semibold">
               Collections
             </button>
           </div>
