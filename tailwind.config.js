@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      gridTemplateColumns: {
+        "autofit": "repeat(auto-fill, minmax(120px, 1fr))",
+      },
       colors: {
         "primary-blue": "#7ca5c0",
         "primary-lighter-blue": "#AEC7D8",

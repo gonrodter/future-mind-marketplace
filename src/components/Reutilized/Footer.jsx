@@ -7,22 +7,22 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-primary-blue w-full h-72 font-body px-20 py-8">
-      <div className="float-left w-1/2 pr-20">
-        <div className="flex items-center">
+    <div className="bg-primary-blue font-body px-12 py-8 lg:px-24">
+      <div className="md:float-left ">
+        <div className="flex justify-center md:justify-start items-center">
           <img className="h-12 w-12" src={White_logo} alt="whitelogo" />
           <p className=" pl-2 text-white text-xl font-semibold uppercase">
             Future Mind
           </p>
         </div>
         <div>
-          <p className="text-white mt-4 pr-96">
+          <p className="text-white text-center md:text-left mt-4 md:w-80">
             We are a marketplace for crypto collectibles and non-fungible tokens
             (NFTs). Buy, sell, and find exclusive digital items. Also, discover
             our incredible art collection.
           </p>
         </div>
-        <div className="flex my-4">
+        <div className="flex justify-center md:justify-start my-4">
           <a href="#">
             <img className="h-6 w-6 mr-2" src={Twitter} alt="Twitter" />
           </a>
@@ -32,8 +32,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-
-      <div className="float-right w-1/2 flex justify-around pl-64 text-white">
+      <div className="grid gap-10 text-center grid-cols-autofit sm:grid-cols-3 my-8 md:my-0 md:text-left md:flex md:justify-end md:gap-8 lg:gap-16 xl:gap-28 text-white">
         <ul>
           <li className="mb-4 font-semibold">
             <a href="">Browse</a>
@@ -83,11 +82,9 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-
       <div className="flex items-center justify-center w-full">
         <img className="w-full" src={Big_line} alt="Big_line" />
       </div>
-
       <div>
         <p className="text-left text-xs text-white mt-2">© 2022 Future Mind</p>
       </div>
