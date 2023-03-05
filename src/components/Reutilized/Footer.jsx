@@ -4,6 +4,7 @@ import Discord from "../../assets/discord.png";
 import Line from "../../assets/line.png";
 import Big_line from "../../assets/big_line.png";
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -47,7 +48,7 @@ const Footer = () => {
             <a href="">Rankings</a>
           </li>
           <li>
-            <a href="/futuremind">Future Mind</a>
+            <Link to="/futuremind">Future Mind</Link>
           </li>
         </ul>
         <ul>

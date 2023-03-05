@@ -26,7 +26,7 @@ const Home = () => {
         </div>
       </div>
       <div className="hidden md:flex md:w-1/2 md:justify-center xl:w-2/5 xl:justify-start mr-12">
-        <div class="w-350px pl-12">
+        <div className="w-350px pl-12">
           <img className="rounded-t-md" src={CK} />
           <div className="rounded-b-md shadow-xl border-2 border-t-0">
             <p className="text-2xl text-primary-blue font-semibold p-4">
