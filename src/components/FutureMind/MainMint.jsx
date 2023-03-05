@@ -53,7 +53,7 @@ const MainMint = ({ accounts, setAccounts }) => {
           alt="CK"
         />
       </div>
-      <div className="pt-10 md:pt-0 md:w-1/2 px-12">
+      <div className="pt-10 md:pt-0 md:w-1/2 px-12 md:pl-0">
         <p className="text-5xl lg:text-6xl font-bold text-secondary-blue">
           MINT IS LIVE NOW!
         </p>
