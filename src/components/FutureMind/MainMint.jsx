@@ -72,7 +72,7 @@ const MainMint = ({ accounts, setAccounts }) => {
                   <input
                     type="number"
                     value={mintAmount}
-                    className="w-12 text-secondary-blue text-center py-2"
+                    className="w-12 text-secondary-blue text-center py-2 pl-4"
                     readOnly
                   />
                   <button
