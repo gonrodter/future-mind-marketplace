@@ -42,25 +42,27 @@ const MainMint = ({ accounts, setAccounts }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center font-body">
-      <div className="h-full w-1/2">
-        <div className="absolute w-1/2 top-48 pl-60">
-          <p className=" text-6xl font-bold text-primary-blue mb-8">
-            RoboPunks
-          </p>
-          <img className="w-2/3 h-full rounded-md " src={ciberpunk} alt="CK" />
-        </div>
+    <div className="min-h-screen font-body block text-center md:flex md:items-center">
+      <div className="px-12 text-center m-auto w-full pt-32 md:w-1/2 md:pt-0">
+        <p className="text-5xl lg:text-6xl font-bold text-primary-blue mb-8">
+          RoboPunks
+        </p>
+        <img
+          className="w-300px sm:w-350px m-auto rounded-md"
+          src={ciberpunk}
+          alt="CK"
+        />
       </div>
-      <div className="h-full w-1/2 px-12">
-        <p className=" text-6xl font-bold text-secondary-blue">
+      <div className="pt-10 md:pt-0 md:w-1/2 px-12">
+        <p className="text-5xl lg:text-6xl font-bold text-secondary-blue">
           MINT IS LIVE NOW!
         </p>
 
         <div className="mt-8">
           {isConnected ? (
             <div>
-              <div className="flex">
-                <div className="border-2 border-secondary-blue rounded-md mr-16">
+              <div className="flex justify-center gap-6 lg:gap-16">
+                <div className="border-2 border-secondary-blue rounded-md">
                   <button
                     onClick={handleDecrement}
                     className="rounded-l-sm text-white bg-secondary-blue px-4 py-2"
@@ -70,7 +72,7 @@ const MainMint = ({ accounts, setAccounts }) => {
                   <input
                     type="number"
                     value={mintAmount}
-                    className="w-20 text-secondary-blue text-center py-2 pl-4"
+                    className="w-12 text-secondary-blue text-center py-2"
                     readOnly
                   />
                   <button
@@ -82,12 +84,12 @@ const MainMint = ({ accounts, setAccounts }) => {
                 </div>
                 <button
                   onClick={handleMint}
-                  className="bg-secondary-blue text-white py-2 w-40 px-4 rounded-md font-semibold mr-16"
+                  className="bg-secondary-blue text-white py-2 w-32 px-4 rounded-md font-semibold"
                 >
                   MINT NOW
                 </button>
               </div>
-              <div className="mt-6 text-primary-blue font-semibold">
+              <div className="mt-6 text-center text-primary-blue font-semibold">
                 <p>MAX 3 NFTS PER TX | MINT PRICE 0.02 ETH + GAS</p>
               </div>
             </div>

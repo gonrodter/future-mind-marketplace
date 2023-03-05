@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        "autofit": "repeat(auto-fill, minmax(120px, 1fr))",
+        autofit: "repeat(auto-fill, minmax(120px, 1fr))",
       },
       colors: {
         "primary-blue": "#7ca5c0",
@@ -15,6 +15,7 @@ module.exports = {
         body: ["Poppins"],
       },
       spacing: {
+        "300px": "300px",
         "350px": "350px",
         "450px": "450px",
         "640px": "640px",

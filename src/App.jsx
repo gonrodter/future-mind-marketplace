@@ -42,8 +42,8 @@ function App () {
             element={
               <>
                 <MainMint accounts={accounts} setAccounts={setAccounts} />
-                <CollectionInfo /> <CollectionAboutUs /> <CollectionRoadmap />
-                <CollectionTeam /> <CollectionFAQ />
+                {/* <CollectionInfo /> <CollectionAboutUs /> <CollectionRoadmap />
+                <CollectionTeam /> <CollectionFAQ /> */}
               </>
             }
           ></Route>

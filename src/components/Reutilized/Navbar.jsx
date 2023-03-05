@@ -18,7 +18,7 @@ const Navbar = ({ accounts, setAccounts }) => {
 
   return (
     <nav className="flex fixed w-full justify-between items-center shadow-md h-16 md:h-20 font-body bg-white z-50 pl-12 md:px-12">
-      <div className="flex items-center ">
+      <div className="flex items-center">
         <img
           className="w-8 h-8 md:w-10 md:h-10 mr-2"
           src={FMlogo}
@@ -32,8 +32,8 @@ const Navbar = ({ accounts, setAccounts }) => {
         </Link>
       </div>
       <ul className="hidden md:flex">
-        <div className="flex font-normal">
-          <li className="pr-8">
+        <div className="flex gap-5 lg:gap-8 font-normal">
+          <li className="">
             <Link
               className=" block text-primary-blue no-underline tracking-wider text-base md:text-lg"
               to="/marketplace"
@@ -41,7 +41,7 @@ const Navbar = ({ accounts, setAccounts }) => {
               Marketplace
             </Link>
           </li>
-          <li className="pr-8">
+          <li className="">
             <Link
               className=" text-primary-blue no-underline tracking-wider text-base md:text-lg"
               to="/futuremind"

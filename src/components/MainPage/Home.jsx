@@ -4,9 +4,9 @@ import React from "react";
 const Home = () => {
   return (
     <div className="py-32 md:py-0 md:min-h-screen flex items-center font-body">
-      <div className="mx-12 md:w-1/2 xl:w-2/3 text-center">
+      <div className="mx-12 md:mr-0 md:w-1/2 xl:w-3/5 text-center">
         <div className="text-left m-auto xl:w-640px">
-          <p className="text-6xl font-bold text-primary-blue">
+          <p className="text-5xl md:text-6xl font-bold text-primary-blue">
             Discover, collect and sell NFts
           </p>
           <div className="mt-10 text-xl text-primary-lighter-blue">
@@ -25,7 +25,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="hidden md:flex md:w-1/2 md:justify-center xl:w-1/3 xl:justify-start">
+      <div className="hidden md:flex md:w-1/2 md:justify-center xl:w-2/5 xl:justify-start mr-12">
         <div class="w-350px pl-12">
           <img className="rounded-t-md" src={CK} />
           <div className="rounded-b-md shadow-xl border-2 border-t-0">
