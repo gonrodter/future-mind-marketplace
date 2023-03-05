@@ -47,7 +47,7 @@ const Footer = () => {
             <a href="">Rankings</a>
           </li>
           <li>
-            <a href="">Future Mind</a>
+            <a href="/futuremind">Future Mind</a>
           </li>
         </ul>
         <ul>
