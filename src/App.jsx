@@ -41,8 +41,9 @@ function App () {
             path="/futuremind"
             element={
               <>
-                <MainMint accounts={accounts} setAccounts={setAccounts} />
-                {/* <CollectionInfo /> <CollectionAboutUs /> <CollectionRoadmap />
+                <MainMint accounts={accounts} setAccounts={setAccounts} />{" "}
+                <CollectionInfo />
+                {/* <CollectionAboutUs /> <CollectionRoadmap />
                 <CollectionTeam /> <CollectionFAQ /> */}
               </>
             }

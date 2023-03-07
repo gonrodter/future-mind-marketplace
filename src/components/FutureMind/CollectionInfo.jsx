@@ -25,7 +25,7 @@ const CollectionInfo = () => {
           <p className="text-xl font-semibold mt-2">Mint price (ETH)</p>
         </div>
       </div>
-      <div className="flex justify-around py-10">
+      <div className="flex justify-around gap-4 py-10">
         <div className="glass p-8">
           <img className="h-48" src={wizard} alt="nft"></img>
         </div>
@@ -45,15 +45,20 @@ const CollectionInfo = () => {
           <img className="h-48" src={snipe} alt="nft"></img>
         </div>
       </div>
-      <div className="px-96 pt-10">
-        <p className="flex items-center text-xl uppercase text-secondary-blue font-bold mb-4">
-          Easy steps <span className="pl-1"><RiLightbulbLine /></span>
-        </p>
-        <p className="text-4xl uppercase text-secondary-blue font-extrabold">
-          How to mint
-        </p>
-        <div className="flex justify-between pt-20">
-          <div className="flex items-center text-left">
+      <div className="pt-10">
+        <div className="text-center">
+          <p className="flex justify-center items-center text-xl uppercase text-secondary-blue font-bold mb-4">
+            Easy steps
+            <span className="pl-1">
+              <RiLightbulbLine />
+            </span>
+          </p>
+          <p className="text-4xl uppercase text-secondary-blue font-extrabold">
+            How to mint
+          </p>
+        </div>
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 justify-center items-center pt-14 mx-10 lg:flex lg:justify-center lg:gap-10 xl:gap-16">
+          <div className="flex justify-center items-center text-left">
             <p className="text-8xl uppercase outlined-text text-purple-600 font-extrabold mr-4 ">
               1
             </p>
@@ -61,7 +66,7 @@ const CollectionInfo = () => {
               Connect Your <br /> Wallet
             </p>
           </div>
-          <div className="flex items-center text-left">
+          <div className="flex justify-center items-center text-left">
             <p className="text-8xl uppercase outlined-text text-green-600 font-extrabold mr-4 ">
               2
             </p>
@@ -69,7 +74,7 @@ const CollectionInfo = () => {
               Select your <br /> Quantity
             </p>
           </div>
-          <div className="flex items-center text-left">
+          <div className="flex justify-center items-center text-left">
             <p className="text-8xl uppercase outlined-text text-yellow-400 font-extrabold mr-4 ">
               3
             </p>
@@ -77,7 +82,7 @@ const CollectionInfo = () => {
               Confirm the <br /> transaction
             </p>
           </div>
-          <div className="flex items-center text-left">
+          <div className="flex justify-center items-center text-left">
             <p className="text-8xl uppercase outlined-text text-red-500 font-extrabold mr-4 ">
               4
             </p>
