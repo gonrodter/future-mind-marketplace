@@ -10,8 +10,8 @@ import React from "react";
 
 const CollectionInfo = () => {
   return (
-    <div className="font-body h-screen linear-bg">
-      <div className="flex justify-around uppercase text-primary-blue text-center py-12 px-52 glass items-center">
+    <div className="font-body h-full pb-10 linear-bg">
+      <div className="flex justify-center items-center gap-12 md:gap-28 uppercase text-primary-blue text-center p-12 glass">
         <div>
           <p className="text-5xl font-bold">50</p>
           <p className="text-xl font-semibold mt-2">To be minted</p>
@@ -23,26 +23,6 @@ const CollectionInfo = () => {
         <div>
           <p className="text-5xl font-bold">0.02</p>
           <p className="text-xl font-semibold mt-2">Mint price (ETH)</p>
-        </div>
-      </div>
-      <div className="flex justify-around gap-4 py-10">
-        <div className="glass p-8">
-          <img className="h-48" src={wizard} alt="nft"></img>
-        </div>
-        <div className="glass p-8">
-          <img className="h-48" src={angry} alt="nft"></img>
-        </div>
-        <div className="glass p-8">
-          <img className="h-48" src={robo} alt="nft"></img>
-        </div>
-        <div className="glass p-8">
-          <img className="h-48" src={turkish} alt="nft"></img>
-        </div>
-        <div className="glass p-8">
-          <img className="h-48" src={cheetah} alt="nft"></img>
-        </div>
-        <div className="glass p-8">
-          <img className="h-48" src={snipe} alt="nft"></img>
         </div>
       </div>
       <div className="pt-10">
@@ -57,7 +37,7 @@ const CollectionInfo = () => {
             How to mint
           </p>
         </div>
-        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 justify-center items-center pt-14 mx-10 lg:flex lg:justify-center lg:gap-10 xl:gap-16">
+        <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 justify-center items-center py-10 mx-32 lg:mx-10 lg:flex lg:justify-center lg:gap-10 xl:gap-16">
           <div className="flex justify-center items-center text-left">
             <p className="text-8xl uppercase outlined-text text-purple-600 font-extrabold mr-4 ">
               1
@@ -90,6 +70,26 @@ const CollectionInfo = () => {
               Receive your <br /> NFTS
             </p>
           </div>
+        </div>
+      </div>
+      <div className="sm:table sm:border-collapse sm:w-full">
+        <div className="hidden p-8 sm:table-cell align-top">
+          <img className="block w-full h-auto" src={wizard} alt="nft"></img>
+        </div>
+        <div className="hidden p-8 xl:table-cell align-top">
+          <img className="block w-full h-auto" src={angry} alt="nft"></img>
+        </div>
+        <div className="flex justify-center sm:p-8 sm:table-cell align-top">
+          <img className="h-48 w-48 block sm:w-full sm:h-auto" src={robo} alt="nft"></img>
+        </div>
+        <div className="hidden p-8 sm:table-cell align-top">
+          <img className="block w-full h-auto" src={turkish} alt="nft"></img>
+        </div>
+        <div className="hidden p-8 md:table-cell align-top">
+          <img className="block w-full h-auto" src={cheetah} alt="nft"></img>
+        </div>
+        <div className="hidden p-8 lg:table-cell align-top">
+          <img className="block w-full h-auto" src={snipe} alt="nft"></img>
         </div>
       </div>
     </div>
