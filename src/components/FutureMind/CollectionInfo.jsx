@@ -11,7 +11,7 @@ import React from "react";
 const CollectionInfo = () => {
   return (
     <div className="font-body h-full pb-10 linear-bg">
-      <div className="grid justify-center xs:flex xs:justify-between md:justify-center items-center gap-4 md:gap-16 uppercase text-primary-blue text-center p-8 sm:p-12 glass">
+      <div className="grid justify-center xs:flex items-center gap-10 md:gap-28 uppercase text-primary-blue text-center p-8 sm:p-12 glass">
         <div>
           <p className="text-5xl font-bold">50</p>
           <p className="text-xl font-semibold mt-2">To be minted</p>
