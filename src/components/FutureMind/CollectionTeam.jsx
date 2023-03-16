@@ -7,17 +7,20 @@ import React from "react";
 
 const CollectionTeam = () => {
   return (
-    <div className="font-body h-full linear-bg px-60 pb-20">
+    <div className="font-body h-full linear-bg px-12 pb-20">
       <div className="pt-16">
-        <p className="flex items-center text-xl uppercase text-secondary-blue font-bold mb-4">
-          Team Members <span className="pl-1"><RiTeamLine /></span>
+        <p className="flex justify-center items-center text-xl uppercase text-secondary-blue font-bold mb-4">
+          Team Members{" "}
+          <span className="pl-1">
+            <RiTeamLine />
+          </span>
         </p>
-        <p className="text-4xl uppercase text-secondary-blue font-extrabold">
+        <p className="text-4xl text-center uppercase text-secondary-blue font-extrabold">
           Meet the crew
         </p>
       </div>
-      <div className="flex flex-row flex-wrap gap-16 py-10">
-        <div className="glass p-16">
+      <div className="grid md:grid-cols-2 2xl:grid-cols-4 2xl:px-0 gap-16 lg:px-40 py-20">
+        <div className="glass p-16 m-auto">
           <img
             className="h-28 block ml-auto mr-auto"
             src={avatar}
@@ -30,7 +33,7 @@ const CollectionTeam = () => {
             Founder and CEO
           </p>
         </div>
-        <div className="glass p-16">
+        <div className="glass p-16 m-auto">
           <img
             className="h-28 block ml-auto mr-auto"
             src={avatar2}
@@ -43,7 +46,7 @@ const CollectionTeam = () => {
             Artist
           </p>
         </div>
-        <div className="glass p-16">
+        <div className="glass p-16 m-auto">
           <img
             className="h-28 block ml-auto mr-auto"
             src={avatar3}
@@ -56,7 +59,7 @@ const CollectionTeam = () => {
             Blockchain Dev
           </p>
         </div>
-        <div className="glass p-16">
+        <div className="glass p-16 m-auto">
           <img
             className="h-28 block ml-auto mr-auto"
             src={avatar4}
