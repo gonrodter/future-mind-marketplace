@@ -7,8 +7,8 @@ import React from "react";
 
 const CollectionAboutUs = () => {
     return (
-      <div className="font-body h-full pb-10 px-12">
-        <div className="flex gap-10 md:gap-16 items-center mt-40">
+      <div className="font-body h-full pb-10 px-8 sm:px-12">
+        <div className="flex gap-10 md:gap-16 items-center mt-20">
           <div className="hidden md:block md:w-1/2">
             <img className="float-right" src={multi} alt="nft" />
           </div>
@@ -37,7 +37,7 @@ const CollectionAboutUs = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 justify-center gap-16 xl:flex mt-16 xl:mt-32">
-          <div className="glass p-8 mx-auto">
+          <div className="glass p-4 sm:p-8 mx-auto">
             <div className="flex items-center">
               <img className="w-10 mr-2" src={controller} alt="controller" />
               <p className="text-2xl text-primary-blue uppercase font-bold">
@@ -49,7 +49,7 @@ const CollectionAboutUs = () => {
               Consectetur nihil laborum tenetur cumque.
             </p>
           </div>
-          <div className="glass p-8 mx-auto">
+          <div className="glass p-4 sm:p-8 mx-auto">
             <div className="flex items-center">
               <img className="w-10 mr-2" src={dollar} alt="dollar" />
               <p className="text-2xl text-primary-blue uppercase font-bold">
@@ -61,7 +61,7 @@ const CollectionAboutUs = () => {
               Consectetur nihil laborum tenetur cumque.
             </p>
           </div>
-          <div className="glass p-8 mx-auto col-span-full">
+          <div className="glass p-4 sm:p-8 mx-auto col-span-full">
             <div className="flex items-center">
               <img className="w-10 mr-2" src={city} alt="city" />
               <p className="text-2xl text-primary-blue uppercase font-bold">
