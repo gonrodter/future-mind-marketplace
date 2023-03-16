@@ -37,7 +37,7 @@ const CollectionInfo = () => {
             How to mint
           </p>
         </div>
-        <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 justify-center items-center py-10 mx-32 lg:mx-10 lg:flex lg:justify-center lg:gap-10 xl:gap-16">
+        <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 justify-center items-center py-10 mx-16 md:mx-32 lg:mx-10 lg:flex lg:justify-center lg:gap-10 xl:gap-16">
           <div className="flex justify-center items-center text-left">
             <p className="text-8xl uppercase outlined-text text-purple-600 font-extrabold mr-4 ">
               1
@@ -80,7 +80,11 @@ const CollectionInfo = () => {
           <img className="block w-full h-auto" src={angry} alt="nft"></img>
         </div>
         <div className="flex justify-center sm:p-8 sm:table-cell align-top">
-          <img className="h-48 w-48 block sm:w-full sm:h-auto" src={robo} alt="nft"></img>
+          <img
+            className="h-48 w-48 block sm:w-full sm:h-auto"
+            src={robo}
+            alt="nft"
+          ></img>
         </div>
         <div className="hidden p-8 sm:table-cell align-top">
           <img className="block w-full h-auto" src={turkish} alt="nft"></img>

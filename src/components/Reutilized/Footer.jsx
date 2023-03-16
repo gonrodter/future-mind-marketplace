@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-primary-blue font-body px-12 py-8 lg:px-24">
+    <div className="bg-primary-blue font-body px-12 py-8 md:pr-8 lg:px-24">
       <div className="md:float-left ">
         <div className="flex justify-center md:justify-start items-center">
           <img className="h-12 w-12" src={White_logo} alt="whitelogo" />
@@ -33,7 +33,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <div className="grid gap-10 text-center grid-cols-autofit sm:grid-cols-3 my-8 md:my-0 md:text-left md:flex md:justify-end md:gap-8 lg:gap-16 xl:gap-28 text-white">
+      <div className="grid gap-16 text-center grid-cols-autofit sm:grid-cols-3 my-8 md:my-0 md:text-left md:flex md:justify-end md:gap-8 lg:gap-16 xl:gap-28 text-white">
         <ul>
           <li className="mb-4 font-semibold">
             <a href="">Browse</a>
@@ -65,8 +65,8 @@ const Footer = () => {
             <a href="">Settings</a>
           </li>
         </ul>
-        <ul>
-          <li className="mb-4 font-semibold">
+        <ul className="col-span-full xs:col-span-1">
+          <li className="mb-4 font-semibold ">
             <a href="">About</a>
           </li>
           <li className="mb-2">
