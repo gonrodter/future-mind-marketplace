@@ -11,20 +11,18 @@ import React from "react";
 const CollectionInfo = () => {
   return (
     <div className="font-body h-full pb-10 linear-bg">
-      <div className="flex justify-between sm:justify-center items-center gap-4 sm:gap-8 md:gap-28 uppercase text-primary-blue text-center p-8 sm:p-12 glass">
+      <div className="grid justify-center xs:flex xs:justify-between md:justify-center items-center gap-4 md:gap-16 uppercase text-primary-blue text-center p-8 sm:p-12 glass">
         <div>
-          <p className="text-3xl sm:text-5xl font-bold">50</p>
-          <p className="text-lg sm:text-xl font-semibold mt-2">To be minted</p>
+          <p className="text-5xl font-bold">50</p>
+          <p className="text-xl font-semibold mt-2">To be minted</p>
         </div>
         <div>
-          <p className="text-3xl sm:text-5xl font-bold">10</p>
-          <p className="text-lg sm:text-xl font-semibold mt-2">Attributes</p>
+          <p className="text-5xl font-bold">10</p>
+          <p className="text-xl font-semibold mt-2">Attributes</p>
         </div>
         <div>
-          <p className="text-3xl sm:text-5xl font-bold">0.02</p>
-          <p className="text-lg sm:text-xl font-semibold mt-2">
-            Mint price (ETH)
-          </p>
+          <p className="text-5xl font-bold">0.02</p>
+          <p className="text-xl font-semibold mt-2">Mint price (ETH)</p>
         </div>
       </div>
       <div className="pt-10">
