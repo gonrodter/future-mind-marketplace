@@ -5,7 +5,7 @@ import React from "react";
 const CollectionFAQ = () => {
     
   return (
-    <div className="font-body h-full px-60 pb-20">
+    <div className="font-body h-full px-12 md:px-32 lg:px-60 pb-20">
       <div className="pt-16 pb-10 text-center">
         <p className="flex items-center justify-center text-xl uppercase text-secondary-blue font-bold mb-4">
           Questions & Answers{" "}

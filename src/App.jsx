@@ -45,7 +45,7 @@ function App () {
                 <CollectionInfo />
                 <CollectionAboutUs />
                 <CollectionRoadmap />
-                <CollectionTeam /> {/*<CollectionFAQ /> */}
+                <CollectionTeam /> <CollectionFAQ />
               </>
             }
           ></Route>
