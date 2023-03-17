@@ -20,7 +20,7 @@ const CollectionTeam = () => {
         </p>
       </div>
       <div className="grid md:grid-cols-2 2xl:grid-cols-4 2xl:px-0 gap-16 lg:px-40 py-20">
-        <div className="glass p-16 m-auto">
+        <div className="glass p-8 md:p-16 m-auto">
           <img
             className="h-28 block ml-auto mr-auto"
             src={avatar}
@@ -33,7 +33,7 @@ const CollectionTeam = () => {
             Founder and CEO
           </p>
         </div>
-        <div className="glass p-16 m-auto">
+        <div className="glass p-8 md:p-16 m-auto">
           <img
             className="h-28 block ml-auto mr-auto"
             src={avatar2}
@@ -46,7 +46,7 @@ const CollectionTeam = () => {
             Artist
           </p>
         </div>
-        <div className="glass p-16 m-auto">
+        <div className="glass p-8 md:p-16 m-auto">
           <img
             className="h-28 block ml-auto mr-auto"
             src={avatar3}
@@ -59,7 +59,7 @@ const CollectionTeam = () => {
             Blockchain Dev
           </p>
         </div>
-        <div className="glass p-16 m-auto">
+        <div className="glass p-8 md:p-16 m-auto">
           <img
             className="h-28 block ml-auto mr-auto"
             src={avatar4}
