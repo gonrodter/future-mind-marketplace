@@ -1,10 +1,14 @@
 import React from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import { BiWalletAlt } from "react-icons/bi";
+import { FiMenu } from "react-icons/fi";
 import FMlogo from "../../assets/secondary_blue_logo.png";
 
 const Navbar = ({ accounts, setAccounts }) => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
   const isConnected = Boolean(accounts[0]);
 
   async function connectAccount() {
@@ -17,7 +21,7 @@ const Navbar = ({ accounts, setAccounts }) => {
   }
 
   return (
-    <nav className="flex fixed w-full justify-between items-center shadow-md h-16 md:h-20 font-body bg-white z-50 pl-12 md:px-12">
+    <nav className="flex fixed w-full h-auto py-4 justify-between items-start md:items-center shadow-md md:h-20 font-body bg-white z-50 px-12">
       <div className="flex items-center pr-2">
         <img
           className="w-8 h-8 md:w-10 md:h-10 mr-2"
@@ -25,70 +29,63 @@ const Navbar = ({ accounts, setAccounts }) => {
           alt="FMLogo"
         />
         <Link
-          className=" text-secondary-blue uppercase tracking-widest text-xl md:text-2xl font-semibold"
+          className="text-secondary-blue uppercase tracking-widest text-xl md:text-2xl font-semibold"
           to="/"
         >
           Future Mind
         </Link>
       </div>
-      <ul className="hidden md:flex">
-        <div className="flex gap-5 lg:gap-8 font-normal">
-          <li className="">
-            <Link
-              className=" block text-primary-blue no-underline tracking-wider text-base md:text-lg"
-              to="/marketplace"
-            >
-              Marketplace
-            </Link>
-          </li>
-          <li className="">
-            <Link
-              className=" text-primary-blue no-underline tracking-wider text-base md:text-lg"
-              to="/futuremind"
-            >
-              FutureMind
-            </Link>
-          </li>
-          <li className="pr-8">
-            <Link
-              className=" text-primary-blue no-underline tracking-wider text-base md:text-lg"
-              to="/"
-            >
-              About
-            </Link>
-          </li>
-        </div>
-        <div className="flex font-normal gap-5 lg:gap-8">
-          <li className="">
-            {isConnected ? (
-              <Link
-                className=" text-primary-blue no-underline inline-block align-middle"
-                to="/mywallet"
-              >
-                <FaRegUser />
+      <div>
+        <FiMenu
+          className="md:hidden items-center
+           text-secondary-blue h-6 w-6 cursor-pointer float-right"
+          onClick={() => setIsNavOpen(!isNavOpen)}
+        />
+        <ul className={`${isNavOpen ? "block" : "hidden"} pt-8 md:flex`}>
+          <div className="md:flex gap-5 lg:gap-8 text-right md:text-center text-primary-blue no-underline text-base md:text-lg tracking-wider font-normal">
+            <li>
+              <Link to="/marketplace">
+                Marketplace
               </Link>
-            ) : (
-              <a className=" text-primary-blue no-underline inline-block align-middle">
-                <FaRegUser />
-              </a>
-            )}
-          </li>
-          <li className="">
-            {isConnected ? (
-              <p className="text-primary-blue no-underline tracking-wider text-base md:text-md lg:text-lg inline-block align-middle border-2 border-secondary-blue px-2 rounded-lg">
-                Connected
-              </p>
-            ) : (
-              <button
-                onClick={connectAccount}
-                className=" text-primary-blue no-underline tracking-wider text-lg inline-block align-middle"
-              >
-                <BiWalletAlt />
-              </button>
-            )}
-          </li>
-        </div>
-      </ul>
+            </li>
+            <li>
+              <Link to="/futuremind">
+                FutureMind
+              </Link>
+            </li>
+            <li>
+              <Link to="/">
+                About
+              </Link>
+            </li>
+            <li>
+              {isConnected ? (
+                <Link className="inline-block align-middle" to="/mywallet">
+                  <FaRegUser />
+                </Link>
+              ) : (
+                <a className="inline-block align-middle">
+                  <FaRegUser />
+                </a>
+              )}
+            </li>
+            <li>
+              {isConnected ? (
+                <p className="md:text-md lg:text-lg inline-block align-middle border-2 border-secondary-blue px-2 rounded-lg">
+                  Connected
+                </p>
+              ) : (
+                <button
+                  onClick={connectAccount}
+                  className="text-lg inline-block align-middle"
+                >
+                  <BiWalletAlt />
+                </button>
+              )}
+            </li>
+          </div>
+        </ul>
+      </div>
     </nav>
   );
 };
