@@ -1,5 +1,6 @@
 import CK from "../../assets/CK_tie.png";
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -19,9 +20,13 @@ const Home = () => {
             <button className="bg-secondary-blue text-white mt-4 py-2 w-32 md:w-40 px-3 rounded-md font-semibold">
               Marketplace
             </button>
-            <button className="bg-secondary-blue text-white mt-4 py-2 w-32 md:w-40 px-4 rounded-md font-semibold">
-              Collections
-            </button>
+            <Link
+              to="/futuremind"
+            >
+              <button className="bg-secondary-blue text-white mt-4 py-2 w-32 md:w-40 px-4 rounded-md font-semibold">
+                Collection
+              </button>
+            </Link>
           </div>
         </div>
       </div>
