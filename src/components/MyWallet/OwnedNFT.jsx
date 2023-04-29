@@ -1,8 +1,14 @@
 import CK from "../../assets/CK_tie.png";
 import React from "react";
 
+// const OwnedNFT = ({ nft }) => {
 const OwnedNFT = () => {
   return (
+    // <div key={nft.id}>
+    //   <img src={nft.image} alt={nft.name} />
+    //   <h2>{nft.name}</h2>
+    //   <p>{nft.description}</p>
+    // </div>
     <div>
       <img className="rounded-t-md " src={CK} />
       <div className="rounded-b-md shadow-xl border-2 border-t-0">
