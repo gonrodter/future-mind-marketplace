@@ -3,14 +3,16 @@ import gangstaCK from "../../assets/gangsta_ck.png";
 import CK from "../../assets/CK_tie.png";
 import ciberpunk from "../../assets/moustache_cyberpunk.png";
 import { RiGalleryFill, RiGlobalLine } from "react-icons/ri";
-import { BsDiscord, BsTwitter } from "react-icons/bs";
-import { FaListUl } from "react-icons/fa";
+import { BsDiscord, BsTwitter, BsCurrencyDollar } from "react-icons/bs";
+import { FaListUl, FaEthereum } from "react-icons/fa";
+import { BiDollarCircle } from "react-icons/bi";
 import Property from "./Property";
 
 const NFTView = () => {
     //! Cambiarlo por una prop
-    const owned = Boolean(1);
+    const owned = Boolean(0);
 
+    //! Cambiar esta variable por una prop con los metadatos del NFT
     const data = [{type: "Background", name: "Light Pink", percentage: 11.61}, {type: "Eyes", name: "Light Golden Glow", percentage: 5.34}, {type: "Hat", name: "Wisdom Hat", percentage: 2.24}, {type: "Clothes", name: "Ck Tie", percentage: 1.60}, {type: "Mouth", name: "Whistle", percentage: 5.50}, {type: "Body", name: "Blue", percentage: 9.01}]
     
     return (
@@ -66,18 +68,36 @@ const NFTView = () => {
                 Sell NFT
               </button>
             ) : (
-              <button className="bg-secondary-blue text-white mt-4 py-2 w-32 md:w-40 px-3 rounded-md font-semibold">
-                Buy NFT
-              </button>
+              <div className="mt-10 p-4 rounded-md border-2 border-primary-lighter-blue">
+                <div className="flex text-secondary-blue font-semibold items-center border-b-2 ">
+                  <BiDollarCircle size={20} />
+                  <p className="pl-2">Current Price</p>
+                </div>
+                <div>
+                  <div className="flex items-center gap-4">
+                    <p className="flex text-secondary-blue font-semibold text-2xl py-2 items-center gap-2">
+                      <FaEthereum />
+                      {/* //!Sustituir por una prop */}
+                      98.1
+                    </p>
+                    <p className="text-secondary-blue">
+                      {/* //!Sustituir por una function que saque la conversión */}
+                      ($157,555.47)
+                    </p>
+                  </div>
+                  <button className="bg-secondary-blue text-white mt-2 py-2 w-32 md:w-40 px-3 rounded-md font-semibold">
+                    Buy NFT
+                  </button>
+                </div>
+              </div>
             )}
           </div>
-          <div className="mt-10 p-4 rounded-md border-2 border-primary-lighter-blue">
+          <div className="mt-6 p-4 rounded-md border-2 border-primary-lighter-blue">
             <div className="flex text-secondary-blue font-semibold items-center border-b-2 ">
               <FaListUl />
               <p className="pl-2">Properties</p>
             </div>
             <div className="grid grid-cols-3 gap-4 mt-4">
-              {/*//! Crear un loop para recorrer todas las properties y crear un componente para cada una */}
               {data.map((nft) => (
                 <Property
                   type={nft.type}
@@ -89,6 +109,7 @@ const NFTView = () => {
           </div>
         </div>
       </div>
+      //   TODO: Explore the collection
     );
 }
 
