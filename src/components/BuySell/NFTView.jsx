@@ -16,8 +16,8 @@ const NFTView = () => {
     const data = [{type: "Background", name: "Light Pink", percentage: 11.61}, {type: "Eyes", name: "Light Golden Glow", percentage: 5.34}, {type: "Hat", name: "Wisdom Hat", percentage: 2.24}, {type: "Clothes", name: "Ck Tie", percentage: 1.60}, {type: "Mouth", name: "Whistle", percentage: 5.50}, {type: "Body", name: "Blue", percentage: 9.01}]
     
     return (
-      <div className="py-32 font-body flex">
-        <div className="w-1/2 px-12">
+      <div className="block px-12 sm:px-28 md:px-0 py-32 md:py-40 font-body md:flex">
+        <div className="md:w-1/2 md:px-12 1.5xl:px-28">
           {/* //!Sustituir imagen del nft por una prop */}
           <img className="rounded-md" src={gangstaCK} alt="CK" />
           <div className="w-full border-2 border-primary-lighter-blue rounded-md p-4 mt-6">
@@ -35,7 +35,7 @@ const NFTView = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/2 pr-12">
+        <div className="md:w-1/2 md:pr-12 1.5xl:pr-28 py-8 md:py-0">
           <div>
             {/* //!Sustituir nombre de la coleccion por una prop */}
             <p className="text-primary-blue font-bold">Chilled Kongs</p>

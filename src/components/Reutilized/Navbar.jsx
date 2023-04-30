@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { FaRegUser } from "react-icons/fa";
+import { FaRegUser, FaEthereum } from "react-icons/fa";
 import { BiWalletAlt } from "react-icons/bi";
 import { FiMenu } from "react-icons/fi";
 import FMlogo from "../../assets/secondary_blue_logo.png";
@@ -73,7 +73,7 @@ const Navbar = ({ accounts, setAccounts }) => {
         <ul
           className={`${isNavOpen ? "block" : "hidden"} pt-10 md:pt-0 md:flex`}
         >
-          <div className="md:flex gap-5 lg:gap-8 text-right md:text-center items-center text-primary-blue no-underline text-base md:text-lg tracking-wider font-normal">
+          <div className="md:flex gap-4 lg:gap-8 text-right md:text-center items-center text-primary-blue no-underline text-base md:text-lg tracking-wider font-normal">
             <li>
               <Link to="/marketplace">Marketplace</Link>
             </li>
@@ -96,13 +96,14 @@ const Navbar = ({ accounts, setAccounts }) => {
             </li>
             <li className="">
               {isConnected ? (
-                <div className="md:text-md lg:text-lg flex items-center 1.5md:border-secondary-blue 1.5md:border-2 1.5md:px-4 1.5md:py-2 rounded-xl float-right">
+                <div className="md:text-md lg:text-lg flex items-center 1.5md:border-secondary-blue 1.5md:border-2 1.5md:px-2 1.5md:py-2 rounded-xl float-right">
                   <img
                     className="rounded-full w-8 1.5md:mr-2"
                     src={ciberpunk}
                     alt="profilePic"
                   />
-                  <p className="hidden 1.5md:block align-middle">
+                  <p className="hidden 1.5md:flex items-center 1.5md:gap-1">
+                    <FaEthereum />
                     {balance} ETH
                   </p>
                 </div>
