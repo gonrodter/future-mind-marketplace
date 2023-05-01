@@ -73,7 +73,7 @@ const Footer = () => {
             <a href="">Company</a>
           </li>
           <li className="mb-2">
-            <a href="">FAQ</a>
+            <Link to="/faq">FAQ</Link>
           </li>
           <li className="mb-2">
             <a href="">Terms & Conditions</a>

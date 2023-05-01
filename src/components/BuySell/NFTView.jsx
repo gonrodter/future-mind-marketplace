@@ -20,7 +20,7 @@ const NFTView = () => {
         <div className="md:w-1/2 md:px-12 1.5xl:px-28">
           {/* //!Sustituir imagen del nft por una prop */}
           <img className="rounded-md" src={gangstaCK} alt="CK" />
-          <div className="w-full border-2 border-primary-lighter-blue rounded-md p-4 mt-6">
+          <div className="hidden md:block w-full border-2 border-primary-lighter-blue rounded-md p-4 mt-6">
             <div className="flex text-secondary-blue font-semibold items-center border-b-2 ">
               <RiGalleryFill />
               {/* //!Sustituir nombre de la coleccion por una prop */}
@@ -105,6 +105,20 @@ const NFTView = () => {
                   percentage={nft.percentage}
                 />
               ))}
+            </div>
+          </div>
+          <div className="md:hidden w-full border-2 border-primary-lighter-blue rounded-md p-4 mt-6">
+            <div className="flex text-secondary-blue font-semibold items-center border-b-2 ">
+              <RiGalleryFill />
+              {/* //!Sustituir nombre de la coleccion por una prop */}
+              <p className="pl-2">About Chilled Kongs</p>
+            </div>
+            <div className="flex mt-4 items-center text-primary-blue gap-4">
+              {/* //!Sustituir imagen de la coleccion por una prop */}
+              <img className="w-8 rounded-full" src={CK} alt="CK" />
+              <BsTwitter size={20} />
+              <BsDiscord size={20} />
+              <RiGlobalLine size={20} />
             </div>
           </div>
         </div>

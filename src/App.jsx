@@ -16,6 +16,7 @@ import CollectionFAQ from "./components/FutureMind/CollectionFAQ";
 import OwnedNFTsList from "./components/MyWallet/OwnedNFTsList";
 import ProfileSection from "./components/MyWallet/ProfileSection";
 import NFTView from "./components/BuySell/NFTView";
+import FAQ from "./components/FooterPages/FAQ";
 
 
 
@@ -59,7 +60,16 @@ function App () {
               </>
             }
           ></Route>
-          <Route path="/marketplace" element={<NFTView />}></Route>
+          <Route 
+            path="/marketplace" 
+            element=
+              {<NFTView />}>
+          </Route>
+          <Route 
+            path="/faq" 
+            element=
+              {<FAQ />}>
+          </Route>
         </Routes>
         <Footer />
       </div>
