@@ -34,7 +34,7 @@ function App () {
             element={
               <>
                 <Home />
-                {/* <TopCollections /> */}
+                <TopCollections />
                 <Advices />
               </>
             }
