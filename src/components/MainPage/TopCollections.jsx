@@ -10,6 +10,9 @@ import oremob from "../../assets/oremob.png";
 import pavia from "../../assets/pavia.png";
 import DEADPXLZ from "../../assets/DEADPXLZ.jpg";
 import yummi from "../../assets/yummi.jpg";
+import space_bud from "../../assets/space_bud.png";
+import magic_kong from "../../assets/magic_kong.png";
+import Dropdown from "./Dropdown";
 
 const TopCollections = () => {
     const data = [
@@ -73,23 +76,48 @@ const TopCollections = () => {
         image: DEADPXLZ,
         name: "DEADPXLZ",
         floor_price: 100,
-        percentage: 79.3,
+        percentage: 0,
         volume: 6632.23,
       },
       {
         image: yummi,
         name: "Yummi Universe",
         floor_price: 100,
-        percentage: 79.3,
+        percentage: -16.1,
+        volume: 6632.23,
+      },
+      {
+        image: space_bud,
+        name: "Space Budz",
+        floor_price: 100,
+        percentage: 10.98,
+        volume: 6632.23,
+      },
+      {
+        image: magic_kong,
+        name: "Magic Kongs",
+        floor_price: 100,
+        percentage: -36.41,
         volume: 6632.23,
       },
     ];
+
+    const handleMenuOne = () => {
+      console.log("clicked one");
+    };
+
+    const handleMenuTwo = () => {
+      console.log("clicked two");
+    };
+    
     return (
       <div className="font-body pb-32">
-        <p className="text-center text-2xl font-semibold text-primary-blue">
-          Top collections: <span>24 hours</span>
-        </p>
-        <div className="grid w-350px xs:w-400px 1.5md:grid-flow-col grid-cols-1 1.5md:grid-cols-2 1.5md:grid-rows-5 justify-center items-center px-0 1.5md:px-12 pt-10 gap-y-4 1.5md:gap-x-10 1.25lg:gap-x-20 1.5md:w-900px mx-auto">
+        <div className="flex justify-center text-center text-2xl font-semibold text-primary-blue items-center">
+          <p>Top collections:</p>
+          <Dropdown />
+        </div>
+        {/* <div className="grid w-350px xs:w-400px 1.5md:grid-flow-col grid-cols-1 1.5md:grid-cols-2 1.5md:grid-rows-5 justify-center items-center px-0 1.5md:px-12 pt-10 gap-y-4 1.5md:gap-x-10 1.25lg:gap-x-20 1.5md:w-900px mx-auto"> */}
+        <div className="grid justify-center items-center grid-cols-1 1.5md:grid-flow-col 1.5md:grid-cols-2 1.5md:grid-rows-6 1.5xl:grid-cols-3 1.5xl:grid-rows-4 mx-auto px-0 pt-10 gap-y-4 1.5md:gap-x-20 w-350px xs:w-400px 1.5md:w-750px 1.25lg:w-1000px 1.5xl:w-1300px">
           {data.map((d) => (
             <TopCollection
               index={data.indexOf(d)}

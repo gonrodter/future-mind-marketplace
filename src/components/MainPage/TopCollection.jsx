@@ -8,8 +8,10 @@ const TopCollections = (props) => {
         className={`${
           props.index + 1 === 1
             ? "mr-6"
-            : props.index + 1 === 10
+            : props.index + 1 === 10 || props.index + 1 === 12
             ? "mr-2"
+            : props.index + 1 === 11
+            ? "mr-3"
             : "mr-4"
         } text-2xl text-primary-blue font-semibold`}
       >
@@ -25,9 +27,19 @@ const TopCollections = (props) => {
       <div className="text-primary-blue ml-3 w-full">
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">{props.name}</p>
-          <p className="text-sm font-semibold">{props.percentage}%</p>
+          <p
+            className={`${
+              props.percentage > 0
+                ? "text-green-300"
+                : props.percentage === 0
+                ? "text-primary-blue"
+                : "text-red-500"
+            }  text-sm font-semibold`}
+          >
+            {props.percentage}%
+          </p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p className="text-sm flex items-center">
             Floor price:
             <span className="text-secondary-blue pl-2">
@@ -36,7 +48,7 @@ const TopCollections = (props) => {
             {props.floor_price}
           </p>
           <p className="text-sm flex items-center font-semibold">
-            <span className="text-secondary-blue pr-2">
+            <span className="text-secondary-blue pr-1">
               <FaEthereum />
             </span>
             {props.volume}
