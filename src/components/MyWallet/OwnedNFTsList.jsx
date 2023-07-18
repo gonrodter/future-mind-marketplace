@@ -8,7 +8,7 @@ const OwnedNFTsList = () => {
     const fetchNFTs = async () => {
       try {
         const options = { method: "GET" };
-        const myWallet = process.env.REACT_APP_MY_WALLET;
+        const myWallet = "0x2bd07b42757D5af6B6c40021E1F5319aF9e7Ccbf";
         const response = await fetch(
           `https://testnets-api.opensea.io/api/v1/assets?owner=${myWallet}`,
           options
