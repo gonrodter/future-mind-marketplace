@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
 import React, { useState } from "react";
+import SearchBar from "../MyWallet/SearchBar";
 
 const ProfileSection = () => {
 
@@ -10,12 +11,9 @@ const ProfileSection = () => {
       .request({ method: "eth_requestAccounts" })
       .then((res) => setAddress(res[0]));
   }
-  console.log(address);
   return (
-    <div className="py-32 ">
-      <div>
-        <p>{address}</p>
-      </div>
+    <div className="pt-32 mx-10 xxs:mx-20">
+      <SearchBar />
     </div>
   );
 };

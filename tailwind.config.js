@@ -31,10 +31,12 @@ module.exports = {
         "1300px": "1300px",
       },
       screens: {
+        xxs: "512px",
         xs: "585px",
         "1.5md": "900px",
         "1.25lg": "1100px",
         "1.5xl": "1370px",
+        "4xl": "1860px",
       },
       maxWidth: {
         "240px": "240px",

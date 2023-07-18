@@ -55,21 +55,13 @@ function App () {
             path="/mywallet"
             element={
               <>
-                {/* <ProfileSection /> */}
+                <ProfileSection />
                 <OwnedNFTsList />
               </>
             }
           ></Route>
-          <Route 
-            path="/marketplace" 
-            element=
-              {<NFTView />}>
-          </Route>
-          <Route 
-            path="/faq" 
-            element=
-              {<FAQ />}>
-          </Route>
+          <Route path="/marketplace" element={<NFTView />}></Route>
+          <Route path="/faq" element={<FAQ />}></Route>
         </Routes>
         <Footer />
       </div>
