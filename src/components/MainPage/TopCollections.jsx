@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import TopCollection from "./TopCollection";
 import gangsta_ck from "../../assets/gangsta_ck.png";
 import moustache_cyberpunk from "../../assets/moustache_cyberpunk.png";
@@ -15,100 +16,125 @@ import magic_kong from "../../assets/magic_kong.png";
 import Dropdown from "./Dropdown";
 
 const TopCollections = () => {
-    const data = [
-      {
-        image: gangsta_ck,
-        name: "Chilled Kong",
-        floor_price: 100,
-        percentage: 79.3,
-        volume: 6632.23,
-      },
-      {
-        image: moustache_cyberpunk,
-        name: "Tiger Society",
-        floor_price: 100,
-        percentage: 79.3,
-        volume: 6632.23,
-      },
-      {
-        image: ape_society,
-        name: "The Ape Society",
-        floor_price: 100,
-        percentage: 79.3,
-        volume: 6632.23,
-      },
-      {
-        image: clay_nation,
-        name: "Clay Nation",
-        floor_price: 100,
-        percentage: 79.3,
-        volume: 6632.23,
-      },
-      {
-        image: boss_rocket,
-        name: "Boss Cat Rocket Club",
-        floor_price: 100,
-        percentage: 79.3,
-        volume: 6632.23,
-      },
-      {
-        image: mallard,
-        name: "The Mallard Order",
-        floor_price: 100,
-        percentage: 79.3,
-        volume: 6632.23,
-      },
-      {
-        image: oremob,
-        name: "Oremob",
-        floor_price: 100,
-        percentage: 79.3,
-        volume: 6632.23,
-      },
-      {
-        image: pavia,
-        name: "Pavia",
-        floor_price: 100,
-        percentage: 79.3,
-        volume: 6632.23,
-      },
-      {
-        image: DEADPXLZ,
-        name: "DEADPXLZ",
-        floor_price: 100,
-        percentage: 0,
-        volume: 6632.23,
-      },
-      {
-        image: yummi,
-        name: "Yummi Universe",
-        floor_price: 100,
-        percentage: -16.1,
-        volume: 6632.23,
-      },
-      {
-        image: space_bud,
-        name: "Space Budz",
-        floor_price: 100,
-        percentage: 10.98,
-        volume: 6632.23,
-      },
-      {
-        image: magic_kong,
-        name: "Magic Kongs",
-        floor_price: 100,
-        percentage: -36.41,
-        volume: 6632.23,
-      },
-    ];
+    const [topCollections, setTopCollections] = useState([]);
 
-    const handleMenuOne = () => {
-      console.log("clicked one");
+    useEffect(() => {
+      fetchTopCollections();
+    }, []);
+
+    const fetchTopCollections = async () => {
+      try {
+
+        const options = {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            "X-API-KEY": "f86838e7-7772-421f-9205-2ed822f1dfac",
+          },
+        };
+
+        const response = await axios.get(
+          "https://data-api.nftgo.io/eth/v1/market/rank/collection/6h?by=volume&with_rarity=false&asc=false&offset=0&limit=12",
+          {
+            headers: {
+              "X-API-KEY": "f86838e7-7772-421f-9205-2ed822f1dfac",
+            },
+          }
+        );
+
+        setTopCollections(response.data.collections);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
-    const handleMenuTwo = () => {
-      console.log("clicked two");
-    };
+    // const data = [
+    //   {
+    //     image: gangsta_ck,
+    //     name: "Chilled Kong",
+    //     floor_price: 100,
+    //     percentage: 79.3,
+    //     volume: 6632.23,
+    //   },
+    //   {
+    //     image: moustache_cyberpunk,
+    //     name: "Tiger Society",
+    //     floor_price: 100,
+    //     percentage: 79.3,
+    //     volume: 6632.23,
+    //   },
+    //   {
+    //     image: ape_society,
+    //     name: "The Ape Society",
+    //     floor_price: 100,
+    //     percentage: 79.3,
+    //     volume: 6632.23,
+    //   },
+    //   {
+    //     image: clay_nation,
+    //     name: "Clay Nation",
+    //     floor_price: 100,
+    //     percentage: 79.3,
+    //     volume: 6632.23,
+    //   },
+    //   {
+    //     image: boss_rocket,
+    //     name: "Boss Cat Rocket Club",
+    //     floor_price: 100,
+    //     percentage: 79.3,
+    //     volume: 6632.23,
+    //   },
+    //   {
+    //     image: mallard,
+    //     name: "The Mallard Order",
+    //     floor_price: 100,
+    //     percentage: 79.3,
+    //     volume: 6632.23,
+    //   },
+    //   {
+    //     image: oremob,
+    //     name: "Oremob",
+    //     floor_price: 100,
+    //     percentage: 79.3,
+    //     volume: 6632.23,
+    //   },
+    //   {
+    //     image: pavia,
+    //     name: "Pavia",
+    //     floor_price: 100,
+    //     percentage: 79.3,
+    //     volume: 6632.23,
+    //   },
+    //   {
+    //     image: DEADPXLZ,
+    //     name: "DEADPXLZ",
+    //     floor_price: 100,
+    //     percentage: 0,
+    //     volume: 6632.23,
+    //   },
+    //   {
+    //     image: yummi,
+    //     name: "Yummi Universe",
+    //     floor_price: 100,
+    //     percentage: -16.1,
+    //     volume: 6632.23,
+    //   },
+    //   {
+    //     image: space_bud,
+    //     name: "Space Budz",
+    //     floor_price: 100,
+    //     percentage: 10.98,
+    //     volume: 6632.23,
+    //   },
+    //   {
+    //     image: magic_kong,
+    //     name: "Magic Kongs",
+    //     floor_price: 100,
+    //     percentage: -36.41,
+    //     volume: 6632.23,
+    //   },
+    // ];
     
     return (
       <div className="font-body pb-32">
@@ -116,16 +142,19 @@ const TopCollections = () => {
           <p>Top collections:</p>
           <Dropdown />
         </div>
-        {/* <div className="grid w-350px xs:w-400px 1.5md:grid-flow-col grid-cols-1 1.5md:grid-cols-2 1.5md:grid-rows-5 justify-center items-center px-0 1.5md:px-12 pt-10 gap-y-4 1.5md:gap-x-10 1.25lg:gap-x-20 1.5md:w-900px mx-auto"> */}
         <div className="grid justify-center items-center grid-cols-1 1.5md:grid-flow-col 1.5md:grid-cols-2 1.5md:grid-rows-6 1.5xl:grid-cols-3 1.5xl:grid-rows-4 mx-auto px-0 pt-10 gap-y-4 1.5md:gap-x-20 w-350px xs:w-400px 1.5md:w-750px 1.25lg:w-1000px 1.5xl:w-1300px">
-          {data.map((d) => (
+          {topCollections.map((collection, index) => (
             <TopCollection
-              index={data.indexOf(d)}
-              image={d.image}
-              name={d.name}
-              floor_price={d.floor_price}
-              percentage={d.percentage}
-              volume={d.volume}
+              index={index}
+              image={collection.logo}
+              name={collection.name}
+              floor_price={collection.floor_price_eth.toFixed(2)}
+              percentage={`${
+                collection.market_cap_change_percentage != null
+                  ? collection.market_cap_change_percentage.toFixed(2)
+                  : collection.market_cap_change_percentage
+              }`}
+              volume={collection.volume_eth.toFixed(2)}
             />
           ))}
         </div>
