@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
 
-const Dropdown = () => {
-  const [value, setValue] = useState("24 hours");
+const Dropdown = ({ onTimeFilterChange }) => {
+  const [value, setValue] = useState("24h");
 
   const handleChange = (e) => {
-    setValue(e.target.value);
+    const selectedValue = e.target.value;
+    setValue(selectedValue);
+    onTimeFilterChange(selectedValue);
   };
 
   return (
@@ -16,21 +18,21 @@ const Dropdown = () => {
         onChange={handleChange}
         style={{ boxSizing: "border-box" }}
       >
-        <option className="text-base" value="24 hours">
+        <option className="text-base" value="24h">
           24 hours
         </option>
-        <option className="text-base" value="7 days">
+        <option className="text-base" value="7d">
           7 days
         </option>
-        <option className="text-base" value="30 days">
+        <option className="text-base" value="30d">
           30 days
         </option>
-        <option className="text-base" value="All time">
+        <option className="text-base" value="all">
           All time
         </option>
       </select>
     </div>
   );
-}
+};
 
 export default Dropdown;

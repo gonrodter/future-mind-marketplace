@@ -2,6 +2,7 @@ import React from "react";
 import { FaEthereum } from "react-icons/fa";
 
 const TopCollections = (props) => {
+  console.log(props.percentage);
   return (
     <div className="font-body flex items-center">
       <p
@@ -31,7 +32,7 @@ const TopCollections = (props) => {
             className={`${
               props.percentage > 0
                 ? "text-green-300"
-                : props.percentage === 0
+                : (props.percentage === 0 || props.percentage == 0.00)
                 ? "text-primary-blue"
                 : "text-red-500"
             }  text-sm font-semibold`}
