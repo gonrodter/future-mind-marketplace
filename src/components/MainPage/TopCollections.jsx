@@ -29,13 +29,6 @@ const TopCollections = () => {
 
     const fetchTopCollections = async () => {
       try {
-        const options = {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            "X-API-KEY": "f86838e7-7772-421f-9205-2ed822f1dfac",
-          },
-        };
 
         const response = await axios.get(
           `https://data-api.nftgo.io/eth/v1/market/rank/collection/${selectedTime}?by=volume&with_rarity=false&asc=false&offset=0&limit=12`,
@@ -150,6 +143,7 @@ const TopCollections = () => {
           {topCollections.map((collection, index) => (
             <TopCollection
               index={index}
+              contract={collection.contracts[0]}
               image={collection.logo}
               name={collection.name}
               floor_price={collection.floor_price_eth.toFixed(2)}

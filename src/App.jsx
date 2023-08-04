@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 import { useState } from "react";
 
 import MainMint from "./components/FutureMind/MainMint";
@@ -17,6 +22,7 @@ import OwnedNFTsList from "./components/MyWallet/OwnedNFTsList";
 import ProfileSection from "./components/MyWallet/ProfileSection";
 import NFTView from "./components/BuySell/NFTView";
 import FAQ from "./components/FooterPages/FAQ";
+import Collection from "./components/Collection/Collection";
 
 
 
@@ -62,6 +68,7 @@ function App () {
           ></Route>
           <Route path="/marketplace" element={<NFTView />}></Route>
           <Route path="/faq" element={<FAQ />}></Route>
+          <Route path="/collection" element={<Collection />}></Route>
         </Routes>
         <Footer />
       </div>

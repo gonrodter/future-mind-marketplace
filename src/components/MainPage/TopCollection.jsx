@@ -1,8 +1,10 @@
 import React from "react";
 import { FaEthereum } from "react-icons/fa";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const TopCollections = (props) => {
-  console.log(props.percentage);
+  const contract = props.contract;
+
   return (
     <div className="font-body flex items-center">
       <p
@@ -19,20 +21,24 @@ const TopCollections = (props) => {
         {props.index + 1}
       </p>
       <div className="w-14 h-10">
-        <img
-          className="rounded-full align-middle"
-          src={props.image}
-          alt="collectionImg"
-        />
+        <Link to={`/collection?contract=${contract}`}>
+          <img
+            className="rounded-full align-middle"
+            src={props.image}
+            alt="collectionImg"
+          />
+        </Link>
       </div>
       <div className="text-primary-blue ml-3 w-full">
         <div className="flex items-center justify-between">
-          <p className="text-lg font-semibold">{props.name}</p>
+          <Link to={`/collection?contract=${contract}`}>
+            <p className="text-lg font-semibold">{props.name}</p>
+          </Link>
           <p
             className={`${
               props.percentage > 0
                 ? "text-green-300"
-                : (props.percentage === 0 || props.percentage == 0.00)
+                : props.percentage === 0 || props.percentage == 0.0
                 ? "text-primary-blue"
                 : "text-red-500"
             }  text-sm font-semibold`}
