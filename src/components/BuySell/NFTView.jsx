@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import gangstaCK from "../../assets/gangsta_ck.png";
 import CK from "../../assets/CK_tie.png";
 import ciberpunk from "../../assets/moustache_cyberpunk.png";
@@ -8,9 +9,17 @@ import { FaListUl, FaEthereum } from "react-icons/fa";
 import { BiDollarCircle } from "react-icons/bi";
 import Property from "./Property";
 
-const NFTView = () => {
+const NFTView = (props) => {
     //! Cambiarlo por una prop
     const owned = Boolean(0);
+
+    const location = useLocation();
+    const image = location.state.image;
+    const id = location.state.id;
+    const collectionName = location.state.collectionName;
+    const collectionImage = location.state.collectionImage;
+    
+    console.log(id);
 
     //! Cambiar esta variable por una prop con los metadatos del NFT
     const data = [{type: "Background", name: "Light Pink", percentage: 11.61}, {type: "Eyes", name: "Light Golden Glow", percentage: 5.34}, {type: "Hat", name: "Wisdom Hat", percentage: 2.24}, {type: "Clothes", name: "Ck Tie", percentage: 1.60}, {type: "Mouth", name: "Whistle", percentage: 5.50}, {type: "Body", name: "Blue", percentage: 9.01}]
@@ -18,17 +27,18 @@ const NFTView = () => {
     return (
       <div className="block px-12 sm:px-28 md:px-0 py-32 md:py-40 font-body md:flex">
         <div className="md:w-1/2 md:px-12 1.5xl:px-28">
-          {/* //!Sustituir imagen del nft por una prop */}
-          <img className="rounded-md" src={gangstaCK} alt="CK" />
+          <img className="rounded-md" src={image} alt="" />
           <div className="hidden md:block w-full border-2 border-primary-lighter-blue rounded-md p-4 mt-6">
             <div className="flex text-secondary-blue font-semibold items-center border-b-2 ">
               <RiGalleryFill />
-              {/* //!Sustituir nombre de la coleccion por una prop */}
-              <p className="pl-2">About Chilled Kongs</p>
+              <p className="pl-2">About {collectionName}</p>
             </div>
             <div className="flex mt-4 items-center text-primary-blue gap-4">
-              {/* //!Sustituir imagen de la coleccion por una prop */}
-              <img className="w-8 rounded-full" src={CK} alt="CK" />
+              <img
+                className="w-8 rounded-full"
+                src={collectionImage}
+                alt="CK"
+              />
               <BsTwitter size={20} />
               <BsDiscord size={20} />
               <RiGlobalLine size={20} />
@@ -37,11 +47,9 @@ const NFTView = () => {
         </div>
         <div className="md:w-1/2 md:pr-12 1.5xl:pr-28 py-8 md:py-0">
           <div>
-            {/* //!Sustituir nombre de la coleccion por una prop */}
-            <p className="text-primary-blue font-bold">Chilled Kongs</p>
-            {/* //!Sustituir nombre del nft por una prop */}
+            <p className="text-primary-blue font-bold">{collectionName}</p>
             <p className="text-secondary-blue  font-semibold text-3xl py-2">
-              Chilled Kong #1132
+              {collectionName} #{id}
             </p>
             {/* //!Sustituir la address por por una prop */}
             <span className="flex items-center gap-2 text-secondary-blue">
@@ -110,12 +118,10 @@ const NFTView = () => {
           <div className="md:hidden w-full border-2 border-primary-lighter-blue rounded-md p-4 mt-6">
             <div className="flex text-secondary-blue font-semibold items-center border-b-2 ">
               <RiGalleryFill />
-              {/* //!Sustituir nombre de la coleccion por una prop */}
-              <p className="pl-2">About Chilled Kongs</p>
+              <p className="pl-2">About {collectionName}</p>
             </div>
             <div className="flex mt-4 items-center text-primary-blue gap-4">
-              {/* //!Sustituir imagen de la coleccion por una prop */}
-              <img className="w-8 rounded-full" src={CK} alt="CK" />
+              <img className="w-8 rounded-full" src={collectionImage} alt="CK" />
               <BsTwitter size={20} />
               <BsDiscord size={20} />
               <RiGlobalLine size={20} />

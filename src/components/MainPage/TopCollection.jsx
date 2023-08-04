@@ -3,7 +3,6 @@ import { FaEthereum } from "react-icons/fa";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const TopCollections = (props) => {
-  const contract = props.contract;
 
   return (
     <div className="font-body flex items-center">
@@ -21,7 +20,10 @@ const TopCollections = (props) => {
         {props.index + 1}
       </p>
       <div className="w-14 h-10">
-        <Link to={`/collection?contract=${contract}`}>
+        <Link
+          to="/collection"
+          state={{ contract: props.contract, image: props.image, slug: props.slug }}
+        >
           <img
             className="rounded-full align-middle"
             src={props.image}
@@ -31,7 +33,11 @@ const TopCollections = (props) => {
       </div>
       <div className="text-primary-blue ml-3 w-full">
         <div className="flex items-center justify-between">
-          <Link to={`/collection?contract=${contract}`}>
+          {/* <Link to={`/collection?contract=${contract}`}> */}
+          <Link
+            to="/collection"
+            state={{ contract: props.contract, image: props.image }}
+          >
             <p className="text-lg font-semibold">{props.name}</p>
           </Link>
           <p

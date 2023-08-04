@@ -153,6 +153,7 @@ const TopCollections = () => {
                   : 0
               }`}
               volume={collection.volume_eth.toFixed(2)}
+              slug={collection.opensea_slug}
             />
           ))}
         </div>
