@@ -18,6 +18,7 @@ const NFTView = (props) => {
     const id = location.state.id;
     const collectionName = location.state.collectionName;
     const collectionImage = location.state.collectionImage;
+    const description = location.state.description;
     
     console.log(id);
 
@@ -27,7 +28,11 @@ const NFTView = (props) => {
     return (
       <div className="block px-12 sm:px-28 md:px-0 py-32 md:py-40 font-body md:flex">
         <div className="md:w-1/2 md:px-12 1.5xl:px-28">
-          <img className="rounded-md" src={image} alt="" />
+          <img
+            className="rounded-md w-full"
+            src={image.replace("w=500", "w=1280")}
+            alt=""
+          />
           <div className="hidden md:block w-full border-2 border-primary-lighter-blue rounded-md p-4 mt-6">
             <div className="flex text-secondary-blue font-semibold items-center border-b-2 ">
               <RiGalleryFill />
@@ -63,12 +68,7 @@ const NFTView = (props) => {
             </span>
           </div>
           <div className="mt-8">
-            <p className="text-secondary-blue">
-              Bringing back our chill to the CNFT space. Among us, there are
-              thousands of Chilled Kongs. Each one is unique, but they all have
-              one thing in common: they are experts in enjoying the good things
-              in life.
-            </p>
+            <p className="text-secondary-blue">{description}</p>
           </div>
           <div className="mt-10">
             {owned ? (
@@ -121,7 +121,11 @@ const NFTView = (props) => {
               <p className="pl-2">About {collectionName}</p>
             </div>
             <div className="flex mt-4 items-center text-primary-blue gap-4">
-              <img className="w-8 rounded-full" src={collectionImage} alt="CK" />
+              <img
+                className="w-8 rounded-full"
+                src={collectionImage}
+                alt="CK"
+              />
               <BsTwitter size={20} />
               <BsDiscord size={20} />
               <RiGlobalLine size={20} />

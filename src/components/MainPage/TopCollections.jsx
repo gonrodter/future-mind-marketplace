@@ -40,7 +40,7 @@ const TopCollections = () => {
         );
 
         setTopCollections(response.data.collections);
-        console.log(response.data);
+        console.log("topCollectionsData", response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

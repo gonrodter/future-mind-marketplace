@@ -52,11 +52,13 @@ const Navbar = ({ accounts, setAccounts }) => {
       } flex fixed w-full h-auto py-4 justify-between md:items-center shadow-md md:h-20 font-body bg-white z-50 px-12`}
     >
       <div className="flex items-center pr-2">
-        <img
-          className="w-8 h-8 md:w-10 md:h-10 mr-2"
-          src={FMlogo}
-          alt="FMLogo"
-        />
+        <Link to="/">
+          <img
+            className="w-8 h-8 md:w-10 md:h-10 mr-2"
+            src={FMlogo}
+            alt="FMLogo"
+          />
+        </Link>
         <Link
           className="text-secondary-blue uppercase tracking-widest text-xl md:text-2xl font-semibold"
           to="/"

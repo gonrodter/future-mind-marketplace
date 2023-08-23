@@ -66,7 +66,7 @@ function App () {
               </>
             }
           ></Route>
-          <Route path="/marketplace" element={<NFTView />}></Route>
+          <Route path="/marketplace" element={<Home />}></Route>
           <Route path="/faq" element={<FAQ />}></Route>
           <Route path="/collection" element={<Collection />}></Route>
           <Route path="/nft" element={<NFTView />}></Route>

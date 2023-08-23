@@ -8,8 +8,8 @@ import CollectionNft from "./CollectionNft";
 const Collection = () => {
   const location = useLocation();
   const contract = location.state.contract;
-  const image = location.state.image;
   const slug = location.state.slug;
+  const floor_price = location.state.floor_price;
 
   const [modifiedBannerImageUrl, setModifiedBannerImageUrl] = useState(null); 
 
@@ -61,18 +61,22 @@ const Collection = () => {
 
   
   return (
-    <div className="font-body py-20">
+    <div className="font-body py-16">
       {modifiedBannerImageUrl ? (
         <CollectionHeader
           bannerImage={modifiedBannerImageUrl}
           image={collectionData.image_url}
           name={collectionData.name}
           description={collectionData.description}
+          items={collectionData.stats.total_supply}
+          floor_price={collectionData.stats.floor_price.toFixed(2)}
+          total_volume={collectionData.stats.total_volume.toFixed(2)}
+          num_owners={collectionData.stats.num_owners}
         />
       ) : null}
 
       <div className="flex justify-around px-20">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-20 my-20 font-body">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-20 my-14 font-body">
           {nfts.map((nft, index) =>
             nft.image_url != null ? (
               <Link

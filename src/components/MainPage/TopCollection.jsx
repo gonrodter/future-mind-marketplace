@@ -22,7 +22,11 @@ const TopCollections = (props) => {
       <div className="w-14 h-10">
         <Link
           to="/collection"
-          state={{ contract: props.contract, image: props.image, slug: props.slug }}
+          state={{
+            contract: props.contract,
+            slug: props.slug,
+            floor_price: props.floor_price,
+          }}
         >
           <img
             className="rounded-full align-middle"
@@ -36,7 +40,11 @@ const TopCollections = (props) => {
           {/* <Link to={`/collection?contract=${contract}`}> */}
           <Link
             to="/collection"
-            state={{ contract: props.contract, image: props.image }}
+            state={{
+              contract: props.contract,
+              slug: props.slug,
+              floor_price: props.floor_price,
+            }}
           >
             <p className="text-lg font-semibold">{props.name}</p>
           </Link>
