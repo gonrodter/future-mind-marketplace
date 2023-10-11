@@ -27,7 +27,7 @@ const Collection = () => {
         `https://api.opensea.io/v2/chain/ethereum/contract/${contract}/nfts?limit=50`,
         {
           headers: {
-            "X-API-KEY": "807c956db2014c249fbf773efca3541d",
+            "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
           },
         }
       );
@@ -44,7 +44,7 @@ const Collection = () => {
         `https://api.opensea.io/api/v1/collection/${slug}`,
         {
           headers: {
-            "X-API-KEY": "807c956db2014c249fbf773efca3541d",
+            "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
           },
         }
       );
