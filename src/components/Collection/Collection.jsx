@@ -69,8 +69,16 @@ const Collection = () => {
           name={collectionData.name}
           description={collectionData.description}
           items={collectionData.stats.total_supply}
-          floor_price={collectionData.stats.floor_price.toFixed(2)}
-          total_volume={collectionData.stats.total_volume.toFixed(2)}
+          floor_price={
+            collectionData.stats.floor_price !== null
+              ? collectionData.stats.floor_price.toFixed(2)
+              : null
+          }
+          total_volume={
+            collectionData.stats.total_volume !== null
+              ? collectionData.stats.total_volume.toFixed(2)
+              : null
+          }
           num_owners={collectionData.stats.num_owners}
         />
       ) : null}
@@ -83,8 +91,10 @@ const Collection = () => {
                 to="/nft"
                 state={{
                   id: nft.identifier,
+                  slug: slug,
                   collectionName: collectionData.name,
                   collectionImage: collectionData.image_url,
+                  collectionAddress: contract,
                   image: nft.image_url,
                   description: collectionData.description,
                 }}

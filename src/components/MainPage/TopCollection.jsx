@@ -46,7 +46,7 @@ const TopCollections = (props) => {
               floor_price: props.floor_price,
             }}
           >
-            <p className="text-lg font-semibold">{props.name}</p>
+            <p className="text-lg font-semibold">{props.name.slice(0, 21)}</p>
           </Link>
           <p
             className={`${
