@@ -90,36 +90,18 @@ const NFTView = (props) => {
     }
   };
 
-  // Crear un objeto para almacenar la suma de cada tipo de rasgo
   const sumOfTraits = {};
 
-  // Recorrer los rasgos en el objeto 'traits'
   for (const traitType in collectionMetadata) {
-    // Obtener el objeto de rasgos de un tipo específico
     const traitData = collectionMetadata[traitType];
 
-    // Calcular la suma de los valores de cada rasgo en este tipo
     const traitSum = Object.values(traitData).reduce(
       (acc, value) => acc + value,
       0
     );
 
-    // Almacenar la suma en el objeto 'sumOfTraits'
     sumOfTraits[traitType] = traitSum;
   }
-
-  // Ahora, 'sumOfTraits' contendrá la suma de cada tipo de rasgo
-  console.log(sumOfTraits);
-
-  //! Cambiar esta variable por una prop con los metadatos del NFT
-  const data = [
-    { type: "Background", name: "Light Pink", percentage: 11.61 },
-    { type: "Eyes", name: "Light Golden Glow", percentage: 5.34 },
-    { type: "Hat", name: "Wisdom Hat", percentage: 2.24 },
-    { type: "Clothes", name: "Ck Tie", percentage: 1.6 },
-    { type: "Mouth", name: "Whistle", percentage: 5.5 },
-    { type: "Body", name: "Blue", percentage: 9.01 },
-  ];
 
   return (
     <div className="block px-12 sm:px-28 md:px-0 py-32 md:py-40 font-body md:flex">
@@ -198,9 +180,7 @@ const NFTView = (props) => {
           </div>
           <div className="grid grid-cols-3 gap-4 mt-4">
             {metadata.map((trait) => {
-              // Compara el trait_type con las claves de sumOfTraits
               if (sumOfTraits.hasOwnProperty(trait.trait_type)) {
-                // Calcula el porcentaje como (trait_count / valor de la key en sumOfTraits) * 100
                 const percentage = (trait.trait_count / sumOfTraits[trait.trait_type]) * 100;
 
                 return (
