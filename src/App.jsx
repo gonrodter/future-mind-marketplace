@@ -23,6 +23,7 @@ import ProfileSection from "./components/MyWallet/ProfileSection";
 import NFTView from "./components/BuySell/NFTView";
 import FAQ from "./components/FooterPages/FAQ";
 import Collection from "./components/Collection/Collection";
+import { AddressProvider } from "./contexts/AddressContext";
 
 
 
@@ -33,45 +34,47 @@ function App () {
   return (
     <Router>
       <div>
-        <Navbar accounts={accounts} setAccounts={setAccounts} />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Home />
-                <TopCollections />
-                <Advices />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/futuremind"
-            element={
-              <>
-                <MainMint accounts={accounts} setAccounts={setAccounts} />{" "}
-                <CollectionInfo />
-                <CollectionAboutUs />
-                <CollectionRoadmap />
-                <CollectionTeam /> <CollectionFAQ />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/mywallet"
-            element={
-              <>
-                <ProfileSection />
-                <OwnedNFTsList />
-              </>
-            }
-          ></Route>
-          <Route path="/marketplace" element={<Home />}></Route>
-          <Route path="/faq" element={<FAQ />}></Route>
-          <Route path="/collection" element={<Collection />}></Route>
-          <Route path="/nft" element={<NFTView />}></Route>
-        </Routes>
-        <Footer />
+        <AddressProvider>
+          <Navbar accounts={accounts} setAccounts={setAccounts} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Home />
+                  <TopCollections />
+                  <Advices />
+                </>
+              }
+            ></Route>
+            <Route
+              path="/futuremind"
+              element={
+                <>
+                  <MainMint accounts={accounts} setAccounts={setAccounts} />
+                  <CollectionInfo />
+                  <CollectionAboutUs />
+                  <CollectionRoadmap />
+                  <CollectionTeam /> <CollectionFAQ />
+                </>
+              }
+            ></Route>
+            <Route
+              path="/mywallet"
+              element={
+                <>
+                  <ProfileSection />
+                  <OwnedNFTsList />
+                </>
+              }
+            ></Route>
+            <Route path="/marketplace" element={<Home />}></Route>
+            <Route path="/faq" element={<FAQ />}></Route>
+            <Route path="/collection" element={<Collection />}></Route>
+            <Route path="/nft" element={<NFTView />}></Route>
+          </Routes>
+          <Footer />
+        </AddressProvider>
       </div>
     </Router>
   );

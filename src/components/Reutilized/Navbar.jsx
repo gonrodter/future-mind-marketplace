@@ -7,43 +7,51 @@ import { FiMenu } from "react-icons/fi";
 import FMlogo from "../../assets/secondary_blue_logo.png";
 import ciberpunk from "../../assets/moustache_cyberpunk.png";
 import { ethers } from "ethers";
+import { useAddress } from "../../contexts/AddressContext";
 
 const Navbar = ({ accounts, setAccounts }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-
-  const isConnected = Boolean(accounts[0]);
+  const { address, setDynamicAddress } = useAddress();
+  const isConnected = Boolean(address && address != "null");
 
   async function connectAccount() {
     if (window.ethereum) {
-      const accounts = await window.ethereum.request({
-        method: "eth_requestAccounts",
-      });
-      setAccounts(accounts);
+      try {
+        const newAccounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        setAccounts(newAccounts);
+
+        // Update the address in the context
+        setDynamicAddress(newAccounts[0]);
+      } catch (error) {
+        console.error("Error connecting wallet:", error);
+      }
     }
   }
 
-  const { ethers } = require('ethers');
-
-  const address = "0x2bd07b42757D5af6B6c40021E1F5319aF9e7Ccbf";
-  const providerUrl = 'https://goerli.infura.io/v3/cc0055304e014896b8975f35fa1d2838';
-
   const [balance, setBalance] = useState(null);
+
   useEffect(() => {
-    // Create a new instance of the ethers provider
+    const providerUrl =
+      "https://goerli.infura.io/v3/cc0055304e014896b8975f35fa1d2838";
     const provider = new ethers.providers.JsonRpcProvider(providerUrl);
 
-    // Call the getBalance method with the address and "latest" block number as arguments
-    provider
-      .getBalance(address, "latest")
-      .then((balance) => {
-        const etherBalance = ethers.utils.formatEther(balance);
-        console.log(`The balance of address ${address} is ${etherBalance} ETH`);
-        setBalance(Number(etherBalance).toFixed(2));
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [address, providerUrl]);
+    if (isConnected) {
+      provider
+        .getBalance(address, "latest")
+        .then((balance) => {
+          const etherBalance = ethers.utils.formatEther(balance);
+          console.log(
+            `The balance of address ${address} is ${etherBalance} ETH`
+          );
+          setBalance(Number(etherBalance).toFixed(2));
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [isConnected, address]);
 
   return (
     <nav

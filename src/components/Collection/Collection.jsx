@@ -3,85 +3,173 @@ import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import CollectionHeader from "./CollectionHeader";
 import CollectionNft from "./CollectionNft";
+import Spinner from "../Reutilized/Spinner";
+import defaultImage from "../../assets/default-image.png";
 
 
 const Collection = () => {
   const location = useLocation();
   const contract = location.state.contract;
   const slug = location.state.slug;
-  const floor_price = location.state.floor_price;
+  const testnet = location.state.testnet;
+
+  const [loading, setLoading] = useState(true);
 
   const [modifiedBannerImageUrl, setModifiedBannerImageUrl] = useState(null); 
 
   const [nfts, setNfts] = useState([]);
   const [collectionData, setCollectionData] = useState([]);
+  const [collectionStats, setCollectionStats] = useState([]);
 
   useEffect(() => {
-    fetchCollectionNfts();
-    fetchCollectionData();
-  }, []);
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        await Promise.all([
+          fetchCollectionNfts(),
+          fetchCollectionData(),
+          fetchCollectionStats(),
+        ]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [slug]);
 
   const fetchCollectionNfts = async () => {
     try {
-      const response = await axios.get(
-        `https://api.opensea.io/v2/chain/ethereum/contract/${contract}/nfts?limit=50`,
-        {
-          headers: {
-            "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-          },
-        }
-      );
+      if (testnet) {
+        const response = await axios.get(
+          `https://testnets-api.opensea.io/v2/chain/goerli/contract/${contract}/nfts?limit=50`,
+          {
+            headers: {
+              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+            },
+          }
+        );
 
-      setNfts(response.data.nfts);
-      console.log("CollectionNfts", response.data);
+        setNfts(response.data.nfts);
+        console.log("CollectionNfts", response.data);
+      } else {
+        const response = await axios.get(
+          `https://api.opensea.io/v2/chain/ethereum/contract/${contract}/nfts?limit=50`,
+          {
+            headers: {
+              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+            },
+          }
+        );
+
+        setNfts(response.data.nfts);
+        console.log("CollectionNfts", response.data);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
   const fetchCollectionData = async () => {
     try {
-      const response = await axios.get(
-        `https://api.opensea.io/api/v1/collection/${slug}`,
-        {
-          headers: {
-            "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-          },
-        }
-      );
+      if (testnet) {
+        const response = await axios.get(
+          `https://testnets-api.opensea.io/api/v2/collections/${slug}`,
+          {
+            headers: {
+              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+            },
+          }
+        );
 
-      setCollectionData(response.data.collection);
-      setModifiedBannerImageUrl(
-        response.data.collection.banner_image_url.replace("w=500", "w=1280")
-      );
-      console.log("CollectionData", response.data);
+        setCollectionData(response.data);
+        setModifiedBannerImageUrl(
+          response.data.banner_image_url.replace("w=500", "w=1280")
+        );
+        console.log("CollectionData", response.data);
+      } else {
+        const response = await axios.get(
+          `https://api.opensea.io/api/v2/collections/${slug}`,
+          {
+            headers: {
+              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+            },
+          }
+        );
+
+        setCollectionData(response.data);
+        setModifiedBannerImageUrl(
+          response.data.banner_image_url.replace("w=500", "w=1280")
+        );
+        console.log("CollectionData", response.data);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
+  const fetchCollectionStats = async () => {
+    try {
+      if (testnet) {
+        const response = await axios.get(
+          `https://testnets-api.opensea.io/api/v2/collections/${slug}/stats`,
+          {
+            headers: {
+              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+            },
+          }
+        );
+
+        setCollectionStats(response.data.total);
+        console.log("CollectionStats", response.data);
+      } else {
+        const response = await axios.get(
+          `https://api.opensea.io/api/v2/collections/${slug}/stats`,
+          {
+            headers: {
+              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+            },
+          }
+        );
+
+        setCollectionStats(response.data.total);
+        console.log("CollectionStats", response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  if (loading) {
+    return <Spinner />;
+  }
   
   return (
     <div className="font-body py-16">
-      {modifiedBannerImageUrl ? (
-        <CollectionHeader
-          bannerImage={modifiedBannerImageUrl}
-          image={collectionData.image_url}
-          name={collectionData.name}
-          description={collectionData.description}
-          items={collectionData.stats.total_supply}
-          floor_price={
-            collectionData.stats.floor_price !== null
-              ? collectionData.stats.floor_price.toFixed(2)
-              : null
-          }
-          total_volume={
-            collectionData.stats.total_volume !== null
-              ? collectionData.stats.total_volume.toFixed(2)
-              : null
-          }
-          num_owners={collectionData.stats.num_owners}
-        />
-      ) : null}
+      <CollectionHeader
+        bannerImage={
+          modifiedBannerImageUrl ? modifiedBannerImageUrl : defaultImage
+        }
+        image={
+          collectionData.image_url !== ""
+            ? collectionData.image_url
+            : defaultImage
+        }
+        name={collectionData.name}
+        description={collectionData.description}
+        items={collectionData.total_supply}
+        floor_price={
+          collectionStats.floor_price !== null ||
+          collectionStats.floor_price !== ""
+            ? collectionStats.floor_price.toFixed(2)
+            : null
+        }
+        total_volume={
+          collectionStats.volume !== null
+            ? collectionStats.volume.toFixed(2)
+            : null
+        }
+        num_owners={collectionStats.num_owners}
+      />
 
       <div className="flex justify-around px-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-20 my-14 font-body">
@@ -97,6 +185,7 @@ const Collection = () => {
                   collectionAddress: contract,
                   image: nft.image_url,
                   description: collectionData.description,
+                  testnet: testnet,
                 }}
               >
                 <CollectionNft

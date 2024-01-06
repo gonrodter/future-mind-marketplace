@@ -2,7 +2,7 @@ import React from "react";
 import { FaEthereum } from "react-icons/fa";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-const TopCollections = (props) => {
+const TopCollection = (props) => {
 
   return (
     <div className="font-body flex items-center">
@@ -43,7 +43,6 @@ const TopCollections = (props) => {
             state={{
               contract: props.contract,
               slug: props.slug,
-              floor_price: props.floor_price,
             }}
           >
             <p className="text-lg font-semibold">{props.name.slice(0, 21)}</p>
@@ -80,4 +79,4 @@ const TopCollections = (props) => {
   );
 };
 
-export default TopCollections;
+export default TopCollection;

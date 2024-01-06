@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import gangstaCK from "../../assets/gangsta_ck.png";
-import CK from "../../assets/CK_tie.png";
-import ciberpunk from "../../assets/moustache_cyberpunk.png";
 import { RiGalleryFill, RiGlobalLine } from "react-icons/ri";
 import { BsDiscord, BsTwitter, BsCurrencyDollar } from "react-icons/bs";
 import { FaListUl, FaEthereum } from "react-icons/fa";
 import { BiDollarCircle } from "react-icons/bi";
 import Property from "./Property";
+import Spinner from "../Reutilized/Spinner";
+import { useAddress } from "../../contexts/AddressContext";
 
 const NFTView = (props) => {
-  //! Cambiarlo por una prop
-  const owned = Boolean(0);
+  const { address, setDynamicAddress } = useAddress();
 
+  //* Collection data
   const location = useLocation();
   const image = location.state.image;
   const id = location.state.id;
@@ -22,33 +21,102 @@ const NFTView = (props) => {
   const collectionImage = location.state.collectionImage;
   const collectionAddress = location.state.collectionAddress;
   const description = location.state.description;
+  const testnet = location.state.testnet;
 
-  console.log(id);
-
-  const [owner, setOwner] = useState([]);
+  //* Data to be fetched
+  const [owner, setOwner] = useState({
+    address: "",
+    profileImage: "",
+  });
   const [collectionMetadata, setCollectionMetadata] = useState([]);
   const [metadata, setMetadata] = useState([]);
+  const [owned, setOwned] = useState(false);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchOwner();
-    fetchCollectionMetadata();
-    fetchMetadata();
-  }, []);
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        await Promise.all([
+          fetchOwner(),
+          fetchCollectionMetadata(),
+          fetchMetadata(),
+        ]);
+      } finally {
+        setOwned(address === owner.address);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [owner.address]);
 
   const fetchOwner = async () => {
     try {
-      const response = await axios.get(
-        `https://api.opensea.io/api/v1/asset/${collectionAddress}/${id}/owners?limit=20&order_by=created_date&order_direction=desc`,
-        {
-          headers: {
-            "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-          },
-        }
-      );
+      if (testnet) {
+        // Fetch address
+        const addressResponse = await axios.get(
+          `https://testnets-api.opensea.io/api/v2/chain/goerli/contract/${collectionAddress}/nfts/${id}/asset/${collectionAddress}/${id}`,
+          {
+            headers: {
+              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+            },
+          }
+        );
 
-      setOwner(response.data.owners[0].owner);
-      console.log("OwnerData", response.data);
-      console.log("Owner", response.data.owners[0].owner.address);
+        const ownerAddress = addressResponse.data.nft.owners[0].address;
+
+        // Fetch profile image
+        const imageResponse = await axios.get(
+          `https://testnets-api.opensea.io/api/v2/accounts/${ownerAddress}`,
+          {
+            headers: {
+              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+            },
+          }
+        );
+
+        const ownerImage = imageResponse.data.profile_image_url;
+
+        const fetchedOwner = {
+          address: ownerAddress,
+          profileImage: ownerImage,
+        };
+
+        setOwner(fetchedOwner);
+      } else {
+        // Fetch address
+        const addressResponse = await axios.get(
+          `https://api.opensea.io/api/v2/chain/ethereum/contract/${collectionAddress}/nfts/${id}/asset/${collectionAddress}/${id}`,
+          {
+            headers: {
+              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+            },
+          }
+        );
+
+        const ownerAddress = addressResponse.data.nft.owners[0].address;
+
+        // Fetch profile image
+        const imageResponse = await axios.get(
+          `https://api.opensea.io/api/v2/accounts/${ownerAddress}`,
+          {
+            headers: {
+              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+            },
+          }
+        );
+
+        const ownerImage = imageResponse.data.profile_image_url;
+
+        const fetchedOwner = {
+          address: ownerAddress,
+          profileImage: ownerImage,
+        };
+
+        setOwner(fetchedOwner);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -56,17 +124,31 @@ const NFTView = (props) => {
 
   const fetchCollectionMetadata = async () => {
     try {
-      const response = await axios.get(
-        `https://api.opensea.io/api/v2/traits/${slug}`,
-        {
-          headers: {
-            "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-          },
-        }
-      );
+      if (testnet) {
+        const response = await axios.get(
+          `https://testnets-api.opensea.io/api/v2/traits/${slug}`,
+          {
+            headers: {
+              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+            },
+          }
+        );
 
-      setCollectionMetadata(response.data.counts);
-      console.log("CollectionMetadata", response.data.counts);
+        setCollectionMetadata(response.data.counts);
+        console.log("CollectionMetadata", response.data.counts);
+      } else {
+        const response = await axios.get(
+          `https://api.opensea.io/api/v2/traits/${slug}`,
+          {
+            headers: {
+              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+            },
+          }
+        );
+
+        setCollectionMetadata(response.data.counts);
+        console.log("CollectionMetadata", response.data.counts);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -74,33 +156,39 @@ const NFTView = (props) => {
 
   const fetchMetadata = async () => {
     try {
-      const response = await axios.get(
-        `https://api.opensea.io/api/v2/chain/ethereum/contract/${collectionAddress}/nfts/${id}`,
-        {
-          headers: {
-            "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-          },
-        }
-      );
+      if (testnet) {
+        console.log(collectionAddress);
+        const response = await axios.get(
+          `https://testnets-api.opensea.io/api/v2/chain/goerli/contract/${collectionAddress}/nfts/${id}`,
+          {
+            headers: {
+              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+            },
+          }
+        );
 
-      setMetadata(response.data.nft.traits);
-      console.log("Metadata", response.data.nft.traits);
+        setMetadata(response.data.nft.traits);
+        console.log("Metadata", response.data.nft.traits);
+      } else {
+        const response = await axios.get(
+          `https://api.opensea.io/api/v2/chain/ethereum/contract/${collectionAddress}/nfts/${id}`,
+          {
+            headers: {
+              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+            },
+          }
+        );
+
+        setMetadata(response.data.nft.traits);
+        console.log("Metadata", response.data.nft.traits);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
-  const sumOfTraits = {};
-
-  for (const traitType in collectionMetadata) {
-    const traitData = collectionMetadata[traitType];
-
-    const traitSum = Object.values(traitData).reduce(
-      (acc, value) => acc + value,
-      0
-    );
-
-    sumOfTraits[traitType] = traitSum;
+  if (loading) {
+    return <Spinner />;
   }
 
   return (
@@ -117,7 +205,11 @@ const NFTView = (props) => {
             <p className="pl-2">About {collectionName}</p>
           </div>
           <div className="flex mt-4 items-center text-primary-blue gap-4">
-            <img className="w-8 rounded-full" src={collectionImage} alt="CK" />
+            {collectionImage != "" ? (
+              <img className="w-8 rounded-full" src={collectionImage} />
+            ) : (
+              null
+            )}
             <BsTwitter size={20} />
             <BsDiscord size={20} />
             <RiGlobalLine size={20} />
@@ -132,11 +224,7 @@ const NFTView = (props) => {
           </p>
           <span className="flex items-center gap-2 text-secondary-blue">
             <p>Owned by</p>
-            <img
-              className="w-8 rounded-full"
-              src={owner.profile_img_url}
-              alt="ciberpunk"
-            />
+            <img className="w-8 rounded-full" src={owner.profileImage} />
             <p>{owner.address}</p>
           </span>
         </div>
@@ -145,7 +233,7 @@ const NFTView = (props) => {
         </div>
         <div className="mt-10">
           {owned ? (
-            <button className="bg-secondary-blue text-white mt-4 py-2 w-32 md:w-40 px-3 rounded-md font-semibold">
+            <button className="bg-secondary-blue text-white mt-2 py-2 w-32 md:w-40 px-3 rounded-md font-semibold">
               Sell NFT
             </button>
           ) : (
@@ -180,8 +268,18 @@ const NFTView = (props) => {
           </div>
           <div className="grid grid-cols-3 gap-4 mt-4">
             {metadata.map((trait) => {
-              if (sumOfTraits.hasOwnProperty(trait.trait_type)) {
-                const percentage = (trait.trait_count / sumOfTraits[trait.trait_type]) * 100;
+                const traitType = trait["trait_type"];
+                const traitValue = trait["value"];
+
+                const totalCountTraitType = Object.values(
+                  collectionMetadata[traitType]
+                ).reduce((sum, count) => sum + count, 0);
+
+                const countTraitValue =
+                  collectionMetadata[traitType][traitValue];
+
+                const percentage =
+                  (countTraitValue / totalCountTraitType) * 100;
 
                 return (
                   <Property
@@ -190,16 +288,6 @@ const NFTView = (props) => {
                     percentage={percentage.toFixed(2)}
                   />
                 );
-              } else {
-                //! Al estar recorriendo metadata (que son los traits que tiene el NFT en sí), nunca entra en el else, por lo que no se van a mostrar los traits que no tenga el NFT
-                return (
-                  <Property
-                    type={trait.trait_type}
-                    name={trait.value}
-                    percentage={"-"}
-                  />
-                );
-              }
             })}
           </div>
         </div>
