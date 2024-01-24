@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const fetchOwnerData = async (collectionAddress, id, testnet) => {
+
   try {
     const response = await axios.get(
       `https://${testnet ? "testnets-api" : "api"}.opensea.io/api/v2/chain/${
@@ -14,6 +15,7 @@ export const fetchOwnerData = async (collectionAddress, id, testnet) => {
     );
 
     const ownerAddress = response.data.nft.owners[0].address;
+    console.log('owner add', ownerAddress);
 
     const imageResponse = await axios.get(
       `https://${
@@ -27,11 +29,12 @@ export const fetchOwnerData = async (collectionAddress, id, testnet) => {
     );
 
     const ownerImage = imageResponse.data.profile_image_url;
-
-    return {
-      address: ownerAddress,
-      profileImage: ownerImage,
+    const owner = {
+      ownerAddress: ownerAddress,
+      ownerImage: ownerImage,
     };
+
+    return owner;
   } catch (error) {
     console.error("Error fetching owner data:", error);
     return null;

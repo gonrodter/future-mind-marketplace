@@ -31,7 +31,7 @@ const NFTView = (props) => {
   //* Data to be fetched
   const [owner, setOwner] = useState({
     address: "",
-    profileImage: "",
+    ownerImage: "",
   });
   const [collectionMetadata, setCollectionMetadata] = useState([]);
   const [metadata, setMetadata] = useState([]);
@@ -48,15 +48,19 @@ const NFTView = (props) => {
           fetchCollectionMetadata(slug, testnet),
           fetchMetadata(collectionAddress, id, testnet),
         ]).then(([ownerData, collectionMetadata, metadata]) => {
-          setOwner(ownerData);
+          const { ownerAddress, ownerImage } = ownerData;
+          const owner = {
+            ownerAddress: ownerAddress,
+            ownerImage: ownerImage,
+          };
+          setOwner(owner);
           setCollectionMetadata(collectionMetadata);
           setMetadata(metadata);
+          setOwned(address === owner.ownerAddress);
+          setLoading(false);
         });
-      } finally {
-        setOwned(address === owner.address);
-        console.log(address);
-        console.log(owner.address);
-        setLoading(false);
+      } catch (error) {
+        console.log(error);
       }
     };
 
@@ -83,9 +87,7 @@ const NFTView = (props) => {
           <div className="flex mt-4 items-center text-primary-blue gap-4">
             {collectionImage != null ? (
               <img className="w-8 rounded-full" src={collectionImage} />
-            ) : (
-              null
-            )}
+            ) : null}
             <BsTwitter size={20} />
             <BsDiscord size={20} />
             <RiGlobalLine size={20} />
@@ -100,8 +102,8 @@ const NFTView = (props) => {
           </p>
           <span className="flex items-center gap-2 text-secondary-blue">
             <p>Owned by</p>
-            <img className="w-8 rounded-full" src={owner.profileImage} />
-            <p>{owner.address}</p>
+            <img className="w-8 rounded-full" src={owner.ownerImage} />
+            <p>{owner.ownerAddress}</p>
           </span>
         </div>
         <div className="mt-8">
@@ -144,26 +146,24 @@ const NFTView = (props) => {
           </div>
           <div className="grid grid-cols-3 gap-4 mt-4">
             {metadata.map((trait) => {
-                const traitType = trait["trait_type"];
-                const traitValue = trait["value"];
+              const traitType = trait["trait_type"];
+              const traitValue = trait["value"];
 
-                const totalCountTraitType = Object.values(
-                  collectionMetadata[traitType]
-                ).reduce((sum, count) => sum + count, 0);
+              const totalCountTraitType = Object.values(
+                collectionMetadata[traitType]
+              ).reduce((sum, count) => sum + count, 0);
 
-                const countTraitValue =
-                  collectionMetadata[traitType][traitValue];
+              const countTraitValue = collectionMetadata[traitType][traitValue];
 
-                const percentage =
-                  (countTraitValue / totalCountTraitType) * 100;
+              const percentage = (countTraitValue / totalCountTraitType) * 100;
 
-                return (
-                  <Property
-                    type={trait.trait_type}
-                    name={trait.value}
-                    percentage={percentage.toFixed(2)}
-                  />
-                );
+              return (
+                <Property
+                  type={trait.trait_type}
+                  name={trait.value}
+                  percentage={percentage.toFixed(2)}
+                />
+              );
             })}
           </div>
         </div>
