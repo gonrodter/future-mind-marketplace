@@ -5,7 +5,21 @@ import { Link } from "react-router-dom";
 const OwnedNFT = ({ nft }) => {
   return (
     <div className="w-64">
-      <img className="rounded-t-md " src={nft.image_url} />
+      <Link
+        to="/nft"
+        state={{
+          id: nft.identifier,
+          slug: nft.collection,
+          collectionName: nft.collection,
+          collectionImage: null,
+          collectionAddress: nft.contract,
+          image: nft.image_url,
+          description: nft.description,
+          testnet: true,
+        }}
+      >
+        <img className="rounded-t-md " src={nft.image_url} />
+      </Link>
       <div className="rounded-b-md shadow-xl border-2 border-t-0">
         <Link
           to="/collection"

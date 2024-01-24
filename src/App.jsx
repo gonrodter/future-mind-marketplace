@@ -21,7 +21,10 @@ import CollectionFAQ from "./components/FutureMind/CollectionFAQ";
 import OwnedNFTsList from "./components/MyWallet/OwnedNFTsList";
 import ProfileSection from "./components/MyWallet/ProfileSection";
 import NFTView from "./components/BuySell/NFTView";
-import FAQ from "./components/FooterPages/FAQ";
+import FAQ from "./components/FAQ/FAQ";
+import FAQGettingStarted from "./components/FAQ/FAQGettingStarted";
+import FAQBuying from "./components/FAQ/FAQBuying";
+import FAQSelling from "./components/FAQ/FAQSelling";
 import Collection from "./components/Collection/Collection";
 import { AddressProvider } from "./contexts/AddressContext";
 
@@ -30,6 +33,7 @@ import { AddressProvider } from "./contexts/AddressContext";
 
 function App () {
   const [accounts, setAccounts] = useState([]);
+  const [search, setSearch] = useState("");
 
   return (
     <Router>
@@ -63,13 +67,16 @@ function App () {
               path="/mywallet"
               element={
                 <>
-                  <ProfileSection />
-                  <OwnedNFTsList />
+                  <ProfileSection search={search} setSearch={setSearch} />
+                  <OwnedNFTsList search={search} />
                 </>
               }
             ></Route>
             <Route path="/marketplace" element={<Home />}></Route>
             <Route path="/faq" element={<FAQ />}></Route>
+            <Route path="/faq/getting-started" element={<FAQGettingStarted />}></Route>
+            <Route path="/faq/buying" element={<FAQBuying />}></Route>
+            <Route path="/faq/selling" element={<FAQSelling />}></Route>
             <Route path="/collection" element={<Collection />}></Route>
             <Route path="/nft" element={<NFTView />}></Route>
           </Routes>

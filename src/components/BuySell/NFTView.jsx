@@ -8,6 +8,11 @@ import { BiDollarCircle } from "react-icons/bi";
 import Property from "./Property";
 import Spinner from "../Reutilized/Spinner";
 import { useAddress } from "../../contexts/AddressContext";
+import {
+  fetchOwnerData,
+  fetchCollectionMetadata,
+  fetchMetadata,
+} from "../../fetchers/nftViewFetcher";
 
 const NFTView = (props) => {
   const { address, setDynamicAddress } = useAddress();
@@ -39,153 +44,24 @@ const NFTView = (props) => {
       try {
         setLoading(true);
         await Promise.all([
-          fetchOwner(),
-          fetchCollectionMetadata(),
-          fetchMetadata(),
-        ]);
+          fetchOwnerData(collectionAddress, id, testnet),
+          fetchCollectionMetadata(slug, testnet),
+          fetchMetadata(collectionAddress, id, testnet),
+        ]).then(([ownerData, collectionMetadata, metadata]) => {
+          setOwner(ownerData);
+          setCollectionMetadata(collectionMetadata);
+          setMetadata(metadata);
+        });
       } finally {
         setOwned(address === owner.address);
+        console.log(address);
+        console.log(owner.address);
         setLoading(false);
       }
     };
 
     fetchData();
-  }, [owner.address]);
-
-  const fetchOwner = async () => {
-    try {
-      if (testnet) {
-        // Fetch address
-        const addressResponse = await axios.get(
-          `https://testnets-api.opensea.io/api/v2/chain/goerli/contract/${collectionAddress}/nfts/${id}/asset/${collectionAddress}/${id}`,
-          {
-            headers: {
-              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-            },
-          }
-        );
-
-        const ownerAddress = addressResponse.data.nft.owners[0].address;
-
-        // Fetch profile image
-        const imageResponse = await axios.get(
-          `https://testnets-api.opensea.io/api/v2/accounts/${ownerAddress}`,
-          {
-            headers: {
-              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-            },
-          }
-        );
-
-        const ownerImage = imageResponse.data.profile_image_url;
-
-        const fetchedOwner = {
-          address: ownerAddress,
-          profileImage: ownerImage,
-        };
-
-        setOwner(fetchedOwner);
-      } else {
-        // Fetch address
-        const addressResponse = await axios.get(
-          `https://api.opensea.io/api/v2/chain/ethereum/contract/${collectionAddress}/nfts/${id}/asset/${collectionAddress}/${id}`,
-          {
-            headers: {
-              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-            },
-          }
-        );
-
-        const ownerAddress = addressResponse.data.nft.owners[0].address;
-
-        // Fetch profile image
-        const imageResponse = await axios.get(
-          `https://api.opensea.io/api/v2/accounts/${ownerAddress}`,
-          {
-            headers: {
-              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-            },
-          }
-        );
-
-        const ownerImage = imageResponse.data.profile_image_url;
-
-        const fetchedOwner = {
-          address: ownerAddress,
-          profileImage: ownerImage,
-        };
-
-        setOwner(fetchedOwner);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  const fetchCollectionMetadata = async () => {
-    try {
-      if (testnet) {
-        const response = await axios.get(
-          `https://testnets-api.opensea.io/api/v2/traits/${slug}`,
-          {
-            headers: {
-              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-            },
-          }
-        );
-
-        setCollectionMetadata(response.data.counts);
-        console.log("CollectionMetadata", response.data.counts);
-      } else {
-        const response = await axios.get(
-          `https://api.opensea.io/api/v2/traits/${slug}`,
-          {
-            headers: {
-              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-            },
-          }
-        );
-
-        setCollectionMetadata(response.data.counts);
-        console.log("CollectionMetadata", response.data.counts);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  const fetchMetadata = async () => {
-    try {
-      if (testnet) {
-        console.log(collectionAddress);
-        const response = await axios.get(
-          `https://testnets-api.opensea.io/api/v2/chain/goerli/contract/${collectionAddress}/nfts/${id}`,
-          {
-            headers: {
-              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-            },
-          }
-        );
-
-        setMetadata(response.data.nft.traits);
-        console.log("Metadata", response.data.nft.traits);
-      } else {
-        const response = await axios.get(
-          `https://api.opensea.io/api/v2/chain/ethereum/contract/${collectionAddress}/nfts/${id}`,
-          {
-            headers: {
-              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-            },
-          }
-        );
-
-        setMetadata(response.data.nft.traits);
-        console.log("Metadata", response.data.nft.traits);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  }, [collectionAddress, id, testnet, address]);
 
   if (loading) {
     return <Spinner />;
@@ -205,7 +81,7 @@ const NFTView = (props) => {
             <p className="pl-2">About {collectionName}</p>
           </div>
           <div className="flex mt-4 items-center text-primary-blue gap-4">
-            {collectionImage != "" ? (
+            {collectionImage != null ? (
               <img className="w-8 rounded-full" src={collectionImage} />
             ) : (
               null

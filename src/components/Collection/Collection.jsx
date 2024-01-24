@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
+import {
+  fetchCollectionNfts,
+  fetchCollectionData,
+  fetchCollectionStats,
+} from "../../fetchers/collectionFetcher";
 import CollectionHeader from "./CollectionHeader";
 import CollectionNft from "./CollectionNft";
 import Spinner from "../Reutilized/Spinner";
@@ -26,118 +31,24 @@ const Collection = () => {
       try {
         setLoading(true);
         await Promise.all([
-          fetchCollectionNfts(),
-          fetchCollectionData(),
-          fetchCollectionStats(),
-        ]);
+          fetchCollectionNfts(contract, testnet),
+          fetchCollectionData(slug, testnet),
+          fetchCollectionStats(slug, testnet),
+        ]).then(([collectionNFTs, collectionData, collectionStats]) => {
+          setNfts(collectionNFTs);
+          setCollectionData(collectionData);
+          setModifiedBannerImageUrl(
+            collectionData.banner_image_url.replace("w=500", "w=1280")
+          );
+          setCollectionStats(collectionStats);
+        });
       } finally {
         setLoading(false);
       }
     };
 
     fetchData();
-  }, [slug]);
-
-  const fetchCollectionNfts = async () => {
-    try {
-      if (testnet) {
-        const response = await axios.get(
-          `https://testnets-api.opensea.io/v2/chain/goerli/contract/${contract}/nfts?limit=50`,
-          {
-            headers: {
-              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-            },
-          }
-        );
-
-        setNfts(response.data.nfts);
-        console.log("CollectionNfts", response.data);
-      } else {
-        const response = await axios.get(
-          `https://api.opensea.io/v2/chain/ethereum/contract/${contract}/nfts?limit=50`,
-          {
-            headers: {
-              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-            },
-          }
-        );
-
-        setNfts(response.data.nfts);
-        console.log("CollectionNfts", response.data);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-  const fetchCollectionData = async () => {
-    try {
-      if (testnet) {
-        const response = await axios.get(
-          `https://testnets-api.opensea.io/api/v2/collections/${slug}`,
-          {
-            headers: {
-              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-            },
-          }
-        );
-
-        setCollectionData(response.data);
-        setModifiedBannerImageUrl(
-          response.data.banner_image_url.replace("w=500", "w=1280")
-        );
-        console.log("CollectionData", response.data);
-      } else {
-        const response = await axios.get(
-          `https://api.opensea.io/api/v2/collections/${slug}`,
-          {
-            headers: {
-              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-            },
-          }
-        );
-
-        setCollectionData(response.data);
-        setModifiedBannerImageUrl(
-          response.data.banner_image_url.replace("w=500", "w=1280")
-        );
-        console.log("CollectionData", response.data);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  const fetchCollectionStats = async () => {
-    try {
-      if (testnet) {
-        const response = await axios.get(
-          `https://testnets-api.opensea.io/api/v2/collections/${slug}/stats`,
-          {
-            headers: {
-              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-            },
-          }
-        );
-
-        setCollectionStats(response.data.total);
-        console.log("CollectionStats", response.data);
-      } else {
-        const response = await axios.get(
-          `https://api.opensea.io/api/v2/collections/${slug}/stats`,
-          {
-            headers: {
-              "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
-            },
-          }
-        );
-
-        setCollectionStats(response.data.total);
-        console.log("CollectionStats", response.data);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  }, [slug, contract, testnet]);
 
   if (loading) {
     return <Spinner />;

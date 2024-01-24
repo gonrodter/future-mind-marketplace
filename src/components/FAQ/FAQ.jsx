@@ -8,11 +8,12 @@ import wallet_icon_faq from "../../assets/wallet_icon_faq.png";
 import FAQSearchBar from "./FAQSearchBar";
 import FAQCard from "./FAQCard";
 import Question from "../Reutilized/Question";
+import { Link } from "react-router-dom";
 
 const FAQ = () => {
     return (
       <div className="font-body">
-        <div className="pt-32 pb-24 bg-gray-100">
+        <div className="pt-36 pb-16 bg-gray-100">
           <div className="flex items-center gap-6 md:gap-10 justify-center mx-12">
             <img
               className="w-20 h-20 md:w-24 md:h-24"
@@ -28,14 +29,20 @@ const FAQ = () => {
               Questions
             </p>
           </div>
-          <div className="pt-8 mx-12">
+          {/* <div className="pt-8 mx-12">
             <FAQSearchBar />
-          </div>
+          </div> */}
         </div>
         <div className="flex flex-wrap gap-x-20 gap-y-14 justify-center xl:justify-center xl:gap-28 my-20 px-12">
-          <FAQCard image={rocket_icon} text="Getting Started" />
-          <FAQCard image={wallet_icon_faq} text="Buying" />
-          <FAQCard image={dollar_icon} text="Selling" />
+          <Link to="/faq/getting-started">
+            <FAQCard image={rocket_icon} text="Getting Started" />
+          </Link>
+          <Link to="/faq/buying">
+            <FAQCard image={wallet_icon_faq} text="Buying" />
+          </Link>
+          <Link to="/faq/selling">
+            <FAQCard image={dollar_icon} text="Selling" />
+          </Link>
         </div>
         <div className="px-12 md:px-36 lg:px-52 2xl:px-60  pb-20">
           <Question
