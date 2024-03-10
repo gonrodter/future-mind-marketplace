@@ -34,7 +34,7 @@ const Navbar = ({ accounts, setAccounts }) => {
 
   useEffect(() => {
     const providerUrl =
-      "https://goerli.infura.io/v3/cc0055304e014896b8975f35fa1d2838";
+      "https://sepolia.infura.io/v3/cc0055304e014896b8975f35fa1d2838";
     const provider = new ethers.providers.JsonRpcProvider(providerUrl);
 
     if (isConnected) {

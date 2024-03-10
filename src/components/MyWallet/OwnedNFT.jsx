@@ -1,8 +1,16 @@
 import CK from "../../assets/CK_tie.png";
-import React from "react";
+import SellNFTModal from "./SellNFTModal";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const OwnedNFT = ({ nft }) => {
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleSellButton = () => {
+    setShowModal(true);
+  };
+
   return (
     <div className="w-64">
       <Link
@@ -37,11 +45,19 @@ const OwnedNFT = ({ nft }) => {
           {nft.identifier}
         </p>
         <div className="flex justify-center w-full pb-6">
-          <button className=" rounded-sm text-white bg-secondary-blue font-semibold px-10 py-2">
+          <button
+            className=" rounded-sm text-white bg-secondary-blue font-semibold px-10 py-2"
+            onClick={handleSellButton}
+          >
             Sell NFT
           </button>
         </div>
       </div>
+      <SellNFTModal
+        nft={nft}
+        visible={showModal}
+        onClose={() => setShowModal(false)}
+      />
     </div>
   );
 };
