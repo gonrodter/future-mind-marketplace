@@ -47,7 +47,7 @@ const MainMint = ({ accounts, setAccounts }) => {
     <div className="min-h-screen font-body block text-center md:flex md:items-center">
       <div className="px-12 text-center m-auto w-full pt-32 md:w-1/2 md:pt-0">
         <p className="text-5xl lg:text-6xl font-bold text-primary-blue mb-8">
-          RoboPunks
+          Future Minders
         </p>
         <img
           className="w-300px sm:w-350px m-auto rounded-md"

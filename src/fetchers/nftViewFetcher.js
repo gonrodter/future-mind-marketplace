@@ -5,7 +5,7 @@ export const fetchOwnerData = async (collectionAddress, id, testnet) => {
   try {
     const response = await axios.get(
       `https://${testnet ? "testnets-api" : "api"}.opensea.io/api/v2/chain/${
-        testnet ? "goerli" : "ethereum"
+        testnet ? "sepolia" : "ethereum"
       }/contract/${collectionAddress}/nfts/${id}/asset/${collectionAddress}/${id}`,
       {
         headers: {
@@ -65,7 +65,7 @@ export const fetchMetadata = async (collectionAddress, id, testnet) => {
   try {
     const response = await axios.get(
       `https://${testnet ? "testnets-api" : "api"}.opensea.io/api/v2/chain/${
-        testnet ? "goerli" : "ethereum"
+        testnet ? "sepolia" : "ethereum"
       }/contract/${collectionAddress}/nfts/${id}`,
       {
         headers: {

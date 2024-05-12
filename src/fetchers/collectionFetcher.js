@@ -5,7 +5,7 @@ export const fetchCollectionNfts = async (contract, testnet) => {
   try {
     const response = await axios.get(
       `https://${testnet ? "testnets-api" : "api"}.opensea.io/v2/chain/${
-        testnet ? "goerli" : "ethereum"
+        testnet ? "sepolia" : "ethereum"
       }/contract/${contract}/nfts?limit=50`,
       {
         headers: {

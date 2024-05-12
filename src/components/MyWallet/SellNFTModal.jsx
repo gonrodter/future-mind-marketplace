@@ -1,24 +1,37 @@
 import React from "react";
-// import { openSeaSDK } from "opensea-js";
+// import { WALLET_ADDRESS, sdk } from "../../utils/openSeaConfig";
 
 const SellNFTModal = ({
   nft,
   visible,
   onClose
 }) => {
-  //   async function handleListing() {
-  //     const expirationTime = Math.round(Date.now() / 1000 + 60 * 60 * 24);
 
-  //     const listing = await openSeaSDK.createListing({
-  //       asset: {
-  //         nft.tokenId,
-  //         nft.tokenAddress,
-  //       },
-  //       nft.accountAddress,
-  //       //! This is the price in ETH and has to bet set with the amount entered by the user in the input field
-  //       startAmount: 3
-  //     });
+  // const createListing = async () => {
+  //   let tokenAddress = nft.contract;
+  //   let tokenId = nft.identifier;
+  //   //! setear el precio segun valor del input
+  //   let listingAmount = 3;
+
+  //   const listing = {
+  //     accountAddress: WALLET_ADDRESS,
+  //     startAmount: listingAmount,
+  //     asset: {
+  //       tokenAddress: tokenAddress,
+  //       tokenId: tokenId,
+  //     },
+  //   };
+
+  //   try {
+  //     const response = await sdk.createListing(listing);
+  //     console.log(
+  //       "Successfully created a listing with orderHash:",
+  //       response.orderHash
+  //     );
+  //   } catch (error) {
+  //     console.error("Error in createListing:", error);
   //   }
+  // };
 
   if (!visible) {
     return null;
