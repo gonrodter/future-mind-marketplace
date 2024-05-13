@@ -161,7 +161,12 @@ const NFTView = (props) => {
                 <Property
                   type={trait.trait_type}
                   name={trait.value}
-                  percentage={percentage.toFixed(2)}
+                  percentage={
+                    percentage.toFixed(2) !== null ||
+                    percentage.toFixed(2) !== ""
+                      ? percentage.toFixed(2)
+                      : null
+                  }
                 />
               );
             })}

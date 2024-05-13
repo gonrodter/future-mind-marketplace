@@ -48,13 +48,27 @@ const TopCollections = () => {
             contract={collection.contracts[0]}
             image={collection.logo}
             name={collection.name}
-            floor_price={collection.floor_price_eth.toFixed(2)}
+            floor_price={
+              collection.floor_price_eth != null
+                ? collection.floor_price_eth.toFixed(2) == 0.0
+                  ? 0
+                  : collection.floor_price_eth.toFixed(2)
+                : 0
+            }
             percentage={`${
               collection.market_cap_change_percentage != null
-                ? collection.market_cap_change_percentage.toFixed(2) == 0.00 ? 0 : collection.market_cap_change_percentage.toFixed(2)
+                ? collection.market_cap_change_percentage.toFixed(2) == 0.0
+                  ? 0
+                  : collection.market_cap_change_percentage.toFixed(2)
                 : 0
             }`}
-            volume={collection.volume_eth.toFixed(2)}
+            volume={
+              collection.volume_eth.toFixed(2) != null
+                ? collection.volume_eth.toFixed(2) == 0.0
+                  ? 0
+                  : collection.volume_eth.toFixed(2)
+                : 0
+            }
             slug={collection.opensea_slug}
           />
         ))}

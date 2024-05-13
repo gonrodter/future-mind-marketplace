@@ -39,7 +39,7 @@ const Footer = () => {
             <a href="">Browse</a>
           </li>
           <li className="mb-2">
-            <a href="">Marketplace</a>
+            <a href="/marketplace">Marketplace</a>
           </li>
           <li className="mb-2">
             <a href="">Collections</a>
@@ -56,7 +56,7 @@ const Footer = () => {
             <a href="">My Account</a>
           </li>
           <li className="mb-2">
-            <a href="">Profile</a>
+            <a href="mywallet">Profile</a>
           </li>
           <li className="mb-2">
             <a href="">Favorites</a>
@@ -70,7 +70,7 @@ const Footer = () => {
             <a href="">About</a>
           </li>
           <li className="mb-2">
-            <a href="">Company</a>
+            <a href="/about-us">Us</a>
           </li>
           <li className="mb-2">
             <Link to="/faq">FAQ</Link>

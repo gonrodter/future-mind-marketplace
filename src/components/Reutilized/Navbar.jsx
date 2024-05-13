@@ -91,7 +91,7 @@ const Navbar = ({ accounts, setAccounts }) => {
               <Link to="/futuremind">FutureMind</Link>
             </li>
             <li>
-              <Link to="/">About</Link>
+              <Link to="/about-us">About</Link>
             </li>
             <li>
               {isConnected ? (

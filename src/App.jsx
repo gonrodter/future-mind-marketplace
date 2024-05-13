@@ -22,6 +22,7 @@ import OwnedNFTsList from "./components/MyWallet/OwnedNFTsList";
 import ProfileSection from "./components/MyWallet/ProfileSection";
 import NFTView from "./components/BuySell/NFTView";
 import FAQ from "./components/FAQ/FAQ";
+import AboutUs from "./components/AboutUs/AboutUs";
 import FAQGettingStarted from "./components/FAQ/FAQGettingStarted";
 import FAQBuying from "./components/FAQ/FAQBuying";
 import FAQSelling from "./components/FAQ/FAQSelling";
@@ -73,8 +74,12 @@ function App () {
               }
             ></Route>
             <Route path="/marketplace" element={<Home />}></Route>
+            <Route path="/about-us" element={<AboutUs />}></Route>
             <Route path="/faq" element={<FAQ />}></Route>
-            <Route path="/faq/getting-started" element={<FAQGettingStarted />}></Route>
+            <Route
+              path="/faq/getting-started"
+              element={<FAQGettingStarted />}
+            ></Route>
             <Route path="/faq/buying" element={<FAQBuying />}></Route>
             <Route path="/faq/selling" element={<FAQSelling />}></Route>
             <Route path="/collection" element={<Collection />}></Route>

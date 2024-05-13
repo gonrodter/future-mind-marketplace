@@ -17,12 +17,12 @@ const Home = () => {
             </p>
           </div>
           <div className="mt-10 w-full flex justify-center gap-10 md:gap-6 lg:gap-10 xl:gap-16 md:justify-start">
-            <button className="bg-secondary-blue text-white mt-4 py-2 w-32 md:w-40 px-3 rounded-md font-semibold">
-              Marketplace
-            </button>
-            <Link
-              to="/futuremind"
-            >
+            <Link to="/marketplace">
+              <button className="bg-secondary-blue text-white mt-4 py-2 w-32 md:w-40 px-3 rounded-md font-semibold">
+                Marketplace
+              </button>
+            </Link>
+            <Link to="/futuremind">
               <button className="bg-secondary-blue text-white mt-4 py-2 w-32 md:w-40 px-4 rounded-md font-semibold">
                 Collection
               </button>
