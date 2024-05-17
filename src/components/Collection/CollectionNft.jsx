@@ -2,9 +2,9 @@ import React from "react";
 
 const CollectionNft = (props) => {
   return (
-    <div className="w-64">
+    <div className="w-64 rounded-xl shadow-xl border-2 overflow-hidden">
       <img className="rounded-t-md" src={props.image} />
-      <div className="rounded-b-md shadow-xl border-2 border-t-0">
+      <div>
         <p className="text-xl text-primary-blue font-semibold px-4 pt-4 pb-4 -m-2">
           {props.id}
         </p>

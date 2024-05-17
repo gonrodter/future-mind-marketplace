@@ -8,6 +8,7 @@ export const fetchOwnedNFTs = async (address) => {
         },
       }
     );
+    console.log("add of the NFTs' owner: ", address);
     const data = await response.json();
     console.log("Owned NFTs: ", data);
 

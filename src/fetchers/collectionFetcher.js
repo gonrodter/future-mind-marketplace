@@ -53,10 +53,28 @@ export const fetchCollectionStats = async (slug, testnet) => {
         },
       }
     );
-
     return response.data.total;
   } catch (error) {
     console.error("Error fetching collection stats:", error);
+    return null;
+  }
+};
+
+
+export const fetchTopCollections = async () => {
+  try {
+    const response = await axios.get(
+      `https://api.opensea.io/api/v2/collections?chain=ethereum&limit=20&order_by=market_cap`,
+      {
+        headers: {
+          "X-API-KEY": "1e89dfd6e7c144cfa18e35dcfb03e13c",
+        },
+      }
+    );
+    console.log('Marketplace top collections: ', response.data);
+    return response.data.collections;
+  } catch (error) {
+    console.error("Error fetching TopCollections:", error);
     return null;
   }
 };

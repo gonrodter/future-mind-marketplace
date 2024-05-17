@@ -1,18 +1,11 @@
-import CK from "../../assets/CK_tie.png";
-import SellNFTModal from "./SellNFTModal";
+import defaultImg from "../../assets/default-image.png";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const OwnedNFT = ({ nft }) => {
 
-  const [showModal, setShowModal] = useState(false);
-
-  const handleSellButton = () => {
-    setShowModal(true);
-  };
-
   return (
-    <div className="w-64">
+    <div className="w-64 rounded-xl shadow-xl border-2 overflow-hidden">
       <Link
         to="/nft"
         state={{
@@ -26,9 +19,12 @@ const OwnedNFT = ({ nft }) => {
           testnet: true,
         }}
       >
-        <img className="rounded-t-md " src={nft.image_url} />
+        <img
+          className="rounded-t-md "
+          src={nft.image_url ? nft.image_url : defaultImg}
+        />
       </Link>
-      <div className="rounded-b-md shadow-xl border-2 border-t-0">
+      <div>
         <Link
           to="/collection"
           state={{
@@ -45,19 +41,11 @@ const OwnedNFT = ({ nft }) => {
           {nft.identifier}
         </p>
         <div className="flex justify-center w-full pb-6">
-          <button
-            className=" rounded-sm text-white bg-secondary-blue font-semibold px-10 py-2"
-            onClick={handleSellButton}
-          >
+          <button className=" rounded-sm text-white bg-secondary-blue font-semibold px-10 py-2">
             Sell NFT
           </button>
         </div>
       </div>
-      <SellNFTModal
-        nft={nft}
-        visible={showModal}
-        onClose={() => setShowModal(false)}
-      />
     </div>
   );
 };

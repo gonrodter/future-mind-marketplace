@@ -28,6 +28,8 @@ import FAQBuying from "./components/FAQ/FAQBuying";
 import FAQSelling from "./components/FAQ/FAQSelling";
 import Collection from "./components/Collection/Collection";
 import { AddressProvider } from "./contexts/AddressContext";
+import MarketplaceSearchBar from "./components/Marketplace/MarketplaceSearchBar";
+import TopCollectionsList from "./components/Marketplace/TopCollectionsList";
 
 
 
@@ -73,7 +75,15 @@ function App () {
                 </>
               }
             ></Route>
-            <Route path="/marketplace" element={<Home />}></Route>
+            <Route
+              path="/marketplace"
+              element={
+                <>
+                  <MarketplaceSearchBar />
+                  <TopCollectionsList />
+                </>
+              }
+            ></Route>
             <Route path="/about-us" element={<AboutUs />}></Route>
             <Route path="/faq" element={<FAQ />}></Route>
             <Route

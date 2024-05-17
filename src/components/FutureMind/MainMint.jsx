@@ -6,7 +6,7 @@ import ciberpunk from "../../assets/moustache_cyberpunk.png";
 import roboPunksNFT from "../../RoboPunksNFT.json";
 import { useAddress } from "../../contexts/AddressContext";
 
-const roboPunksNFTAddress = "0xA8A94385aBC51E33aAC8DE59Ca9FBA75C9fb9d49";
+const roboPunksNFTAddress = "0xBf7a8E92a4C5c2C84777cB694634a60296468D88";
 
 const MainMint = ({ accounts, setAccounts }) => {
   const [mintAmount, setMintAmount] = useState(1);

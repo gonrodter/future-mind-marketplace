@@ -29,7 +29,7 @@ const OwnedNFTsList = ({ search }) => {
   return (
     <div className="flex justify-around px-12 transition-opacity duration-500">
       {nfts.length > 0 ? (
-        <div className="min-h-screen grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-20 my-20 font-body">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-20 my-20 font-body">
           {nfts.map((nft) => (
             <OwnedNFT nft={nft} key={nft.id} />
           ))}
