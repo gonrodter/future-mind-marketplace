@@ -4,8 +4,8 @@ import divider from "../../assets/divider.png";
 const AboutUs = () => {
   return (
     <div className="flex flex-col items-center gap-10 font-body py-32 px-12 w-full">
-      <div className="flex flex-col gap-4 max-w-1000px">
-        <p className="font-bold text-5xl text-secondary-blue">
+      <div className="flex flex-col gap-4 max-w-1000px text-center md:text-left">
+        <p className="font-bold text-3xl md:text-5xl text-secondary-blue">
           Uniendo arte y tecnología en un mundo de posibilidades infinitas
         </p>
         <p className=" text-xl text-primary-blue">
@@ -16,11 +16,11 @@ const AboutUs = () => {
         </p>
       </div>
       <img src={divider} alt="divider" className="w-20 h-3" />
-      <div className="flex flex-col gap-4 max-w-1000px">
-        <p className="font-bold text-4xl text-secondary-blue">
+      <div className="flex flex-col gap-4 max-w-1000px text-center md:text-left">
+        <p className="font-bold text-3xl md:text-4xl text-secondary-blue">
           Valores que nos definen
         </p>
-        <p className="text-lg text-primary-blue">
+        <p className="text-xl text-primary-blue">
           Enraizados en la transparencia, la autenticidad y la equidad, nuestros
           valores guían cada interacción y transacción en nuestra plataforma,
           creando un ambiente donde la confianza y la integridad son
@@ -28,9 +28,9 @@ const AboutUs = () => {
         </p>
       </div>
       <img src={divider} alt="divider" className="w-20 h-3" />
-      <div className="flex flex-col gap-4 max-w-1000px">
+      <div className="flex flex-col gap-4 max-w-1000px text-center md:text-left">
         <div className="flex flex-col text-secondary-blue">
-          <p className="font-bold text-4xl">Nuestra Historia</p>
+          <p className="font-bold text-3xl md:text-4xl">Nuestra Historia</p>
           <p className="font-bold text-xl">
             Un Viaje de Pasión por las Criptomonedas y la Innovación Tecnológica
           </p>

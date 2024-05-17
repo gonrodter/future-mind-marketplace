@@ -3,7 +3,7 @@ import TopCollectionCard from "./TopCollectionCard";
 import { fetchTopCollections } from "../../fetchers/collectionFetcher";
 import Spinner from "../Reutilized/Spinner";
 
-const TopCollectionsList = () => {
+const TopCollectionsList = ({ search }) => {
   const [loading, setLoading] = useState(true);
 
   const [topCollections, setTopCollections] = useState(true);
@@ -12,25 +12,26 @@ const TopCollectionsList = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        await Promise.all([fetchTopCollections()]).then(
-          ([topCollections]) => {
-            setTopCollections(topCollections);
-          }
-        );
+        await Promise.all([fetchTopCollections()]).then(([topCollections]) => {
+          const filteredCollections = topCollections.filter((collection) =>
+            collection.name.toLowerCase().includes(search.toLowerCase())
+          );
+          setTopCollections(filteredCollections);
+        });
       } finally {
         setLoading(false);
       }
     };
 
     fetchData();
-  }, []);
+  }, [search]);
 
   if (loading) {
     return <Spinner />;
   }
 
   return (
-    <div className="px-12 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-14 my-20 font-body justify-items-center">
+    <div className="px-12 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-14 mb-20 font-body justify-items-center">
       {topCollections
         .filter(
           (collection) =>

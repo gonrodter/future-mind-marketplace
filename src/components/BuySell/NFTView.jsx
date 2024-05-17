@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { RiGalleryFill, RiGlobalLine } from "react-icons/ri";
 import { BsDiscord, BsTwitter, BsCurrencyDollar } from "react-icons/bs";
 import { FaListUl, FaEthereum } from "react-icons/fa";
@@ -14,6 +14,7 @@ import {
   fetchMetadata,
 } from "../../fetchers/nftViewFetcher";
 
+
 const NFTView = (props) => {
   const { address, setDynamicAddress } = useAddress();
 
@@ -24,6 +25,9 @@ const NFTView = (props) => {
   const slug = location.state.slug;
   const collectionName = location.state.collectionName;
   const collectionImage = location.state.collectionImage;
+  const collectionWebsite = location.state.collectionWebsite;
+  const collectionTwitter = location.state.collectionTwitter;
+  const collectionDiscord = location.state.collectionDiscord;
   const collectionAddress = location.state.collectionAddress;
   const description = location.state.description;
   const testnet = location.state.testnet;
@@ -65,6 +69,7 @@ const NFTView = (props) => {
     };
 
     fetchData();
+    console.log("website", collectionWebsite);
   }, [collectionAddress, id, testnet, address]);
 
   if (loading) {
@@ -86,11 +91,35 @@ const NFTView = (props) => {
           </div>
           <div className="flex mt-4 items-center text-primary-blue gap-4">
             {collectionImage != null ? (
-              <img className="w-8 rounded-full" src={collectionImage} />
+              <Link
+                to="/collection"
+                state={{
+                  testnet: testnet,
+                  contract: collectionAddress,
+                  slug: slug,
+                }}
+              >
+                <img className="w-8 rounded-full" src={collectionImage} />
+              </Link>
             ) : null}
-            <BsTwitter size={20} />
-            <BsDiscord size={20} />
-            <RiGlobalLine size={20} />
+            <Link
+              to={`https://twitter.com/${collectionTwitter}`}
+              target="_blank"
+            >
+              <BsTwitter size={20} />
+            </Link>
+            <Link
+              to={collectionDiscord != "" ? collectionDiscord : null}
+              target="_blank"
+            >
+              <BsDiscord size={20} />
+            </Link>
+            <Link
+              to={collectionWebsite != "" ? collectionWebsite : null}
+              target="_blank"
+            >
+              <RiGlobalLine size={20} />
+            </Link>
           </div>
         </div>
       </div>
@@ -178,10 +207,32 @@ const NFTView = (props) => {
             <p className="pl-2">About {collectionName}</p>
           </div>
           <div className="flex mt-4 items-center text-primary-blue gap-4">
-            <img className="w-8 rounded-full" src={collectionImage} alt="CK" />
-            <BsTwitter size={20} />
-            <BsDiscord size={20} />
-            <RiGlobalLine size={20} />
+            <Link
+              to="/collection"
+              state={{
+                testnet: testnet,
+                contract: collectionAddress,
+                slug: slug,
+              }}
+            >
+              <img
+                className="w-8 rounded-full"
+                src={collectionImage}
+                alt="CK"
+              />
+            </Link>
+            <Link
+              to={`https://twitter.com/${collectionTwitter}`}
+              target="_blank"
+            >
+              <BsTwitter size={20} />
+            </Link>
+            <Link to={collectionDiscord} target="_blank">
+              <BsDiscord size={20} />
+            </Link>
+            <Link to={collectionWebsite} target="_blank">
+              <RiGlobalLine size={20} />
+            </Link>
           </div>
         </div>
       </div>

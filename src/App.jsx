@@ -38,6 +38,8 @@ function App () {
   const [accounts, setAccounts] = useState([]);
   const [search, setSearch] = useState("");
 
+  const [collectionSearch, setCollectionSearch] = useState("");
+
   return (
     <Router>
       <div>
@@ -79,8 +81,11 @@ function App () {
               path="/marketplace"
               element={
                 <>
-                  <MarketplaceSearchBar />
-                  <TopCollectionsList />
+                  <MarketplaceSearchBar
+                    search={collectionSearch}
+                    setSearch={setCollectionSearch}
+                  />
+                  <TopCollectionsList search={collectionSearch} />
                 </>
               }
             ></Route>

@@ -1,14 +1,19 @@
 import React from 'react';
 
 const MarketplaceSearchBar = ({ search, setSearch }) => {
+    let numNfts = 0;
+
+    const handleInputChange = (e) => {
+      setSearch(e.target.value);
+    };
     return (
-      <div className="flex justify-center pt-32">
+      <div className="flex justify-center pt-24">
         <input
           type="text"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={handleInputChange}
           placeholder="Search for a collection"
-          className="w-96 h-12 px-4 my-8 text-lg font-body text-secondary-blue border-2 border-primary-blue rounded-lg"
+          className="w-72 h-12 px-4 my-8 text-lg font-body text-secondary-blue border-2 border-primary-blue rounded-lg"
         />
       </div>
     );
