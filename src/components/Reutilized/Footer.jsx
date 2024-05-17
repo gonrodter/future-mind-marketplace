@@ -42,10 +42,10 @@ const Footer = () => {
             <a href="/marketplace">Marketplace</a>
           </li>
           <li className="mb-2">
-            <a href="">Collections</a>
+            <a href="/marketplace">Collections</a>
           </li>
           <li className="mb-2">
-            <a href="">Rankings</a>
+            <a href="/">Rankings</a>
           </li>
           <li>
             <Link to="/futuremind">Future Mind</Link>
@@ -56,7 +56,7 @@ const Footer = () => {
             <a href="">My Account</a>
           </li>
           <li className="mb-2">
-            <a href="mywallet">Profile</a>
+            <a href="/mywallet">Profile</a>
           </li>
           <li className="mb-2">
             <a href="">Favorites</a>
@@ -87,7 +87,7 @@ const Footer = () => {
         <img className="w-full" src={Big_line} alt="Big_line" />
       </div>
       <div>
-        <p className="text-left text-xs text-white mt-2">© 2022 Future Mind</p>
+        <p className="text-left text-xs text-white mt-2">© 2024 Future Mind</p>
       </div>
     </div>
   );

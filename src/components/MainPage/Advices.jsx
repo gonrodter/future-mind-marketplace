@@ -6,7 +6,7 @@ import React from "react";
 const Advices = () => {
   return (
     <div className="md:flex font-body">
-      <div className="w-full bg-gray-100 mb-52 py-16 md:pb-0">
+      <div className="w-full bg-gray-100 py-16 md:pb-0">
         <div>
           <p className="text-center font-bold text-3xl text-primary-blue">
             Here are some advices
